@@ -25,22 +25,15 @@ services like [GitHub](http://github.com), [BitBucket](http://bitbucket.org) or
 [GitLab](http://gitlab.com/) to hold those master copies; we'll explore the pros and cons of this in the final section of this lesson.
 
 Let's start by sharing the changes we've made to our current project
-with the world. Create an account on bitbucket
-(www.bitbucket.org). Bitbucket have an academic programme, which
+with the world. Create an account on [bitbucket.org](https://bitbucket.org). Bitbucket have an academic programme, which
 allows you to have unlimited private repositories (unlike some other
-websites). You can sign up for this, if you want to.
+websites). If you use an `.ac.uk` email address to sign up, you will
+automatically get this feature.
 
-Log in to Bitbucket, then click on the menu "Repositories" and
+Log in to Bitbucket, then click on the menu drop-down "Repositories" and
 create a new repository called `planets`:
 
-![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
-
-![Creating a Repository on GitHub (Step 2)](../fig/github-create-repo-02.png)
-
-As soon as the repository is created, GitHub displays a page with a URL and some
-information on how to configure your local repository:
-
-![Creating a Repository on GitHub (Step 3)](../fig/github-create-repo-03.png)
+![Creating a Repository](../fig/bitbucket-new-repo.png)
 
 This effectively does the following on Bitbucket's servers:
 
@@ -52,43 +45,39 @@ $ git init
 {: .bash}
 
 Our local repository still contains our earlier work on `mars.txt`, but the
-remote repository on GitHub doesn't contain any files yet:
-
-![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.svg)
-
+remote repository on bitbucket doesn't contain any files yet.
 The next step is to connect the two repositories.  We do this by making the
-GitHub repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
-The home page of the repository on GitHub includes the string we need to
-identify it:
+bitbucket repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
 
-![Where to Find Repository URL on GitHub](../fig/github-find-repo-string.png)
+As soon as the repository is created, bitbucket displays a page with a
+URL and some information on how to configure your local repository.
 
-Click on the 'HTTPS' link to change the [protocol]({{ page.root }}/reference/#protocol) from
-SSH to HTTPS.
+![New Repository](../fig/bitbucket-new-repo-empty.png)
+
+We have an existing repository, so click on the "I have an existing
+project" link. It will give you some instructions for linking up your
+repository to the website. However, we will change the
+authentication from SSH to HTTPS, as it is easier to work with for
+now. Use a pattern like this (replacing vlad with your bitbucket username).
+
+~~~
+git remote add origin https://vlad@bitbucket.org/vlad/planets.git
+~~~
+{: .bash}
+
+Make sure to use the URL for your repository rather than Vlad's: the only
+difference should be your username instead of `vlad`.
 
 > ## HTTPS vs. SSH
 >
 > We use HTTPS here because it does not require additional configuration.  After
 > the workshop you may want to set up SSH access, which is a bit more secure, by
 > following one of the great tutorials from
-> [GitHub](https://help.github.com/articles/generating-ssh-keys),
+> [github](https://help.github.com/articles/generating-ssh-keys),
 > [Atlassian/BitBucket](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git)
 > and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
 > (this one has a screencast).
 {: .callout}
-
-![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
-
-Copy that URL from the browser, go into the local `planets` repository, and run
-this command:
-
-~~~
-$ git remote add origin https://git@bitbucket.org/vlad/planets.git
-~~~
-{: .bash}
-
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
 
 We can check that the command has worked by running `git remote -v`:
 
@@ -107,12 +96,16 @@ The name `origin` is a local nickname for your remote repository: we could use
 something else if we wanted to, but `origin` is the default.
 
 Once the nickname `origin` is set up, this command will push the changes from
-our local repository to the repository on GitHub:
+our local repository to the repository on bitbucket:
 
 ~~~
-$ git push origin master
+$ git push -u origin master
 ~~~
 {: .bash}
+
+By adding the "-u" option we connect the "upstream" tag "origin" with
+the repository so you don't have to always specify "origin" every time you
+do "git push". It is now the default.
 
 ~~~
 Counting objects: 9, done.
@@ -126,27 +119,10 @@ Branch master set up to track remote branch master from origin.
 ~~~
 {: .output}
 
-> ## Proxy
->
-> If the network you are connected to uses a proxy there is an chance that your
-> last command failed with "Could not resolve hostname" as the error message. To
-> solve this issue you need to tell Git about the proxy:
->
-> ~~~
-> $ git config --global http.proxy http://user:password@proxy.url
-> $ git config --global https.proxy http://user:password@proxy.url
-> ~~~
-> {: .bash}
->
-> When you connect to another network that doesn't use a proxy you will need to
-> tell Git to disable the proxy using:
->
-> ~~~
-> $ git config --global --unset http.proxy
-> $ git config --global --unset https.proxy
-> ~~~
-> {: .bash}
-{: .callout}
+The complete history (such that it is) of our repository has now been
+transferred to the online repository. We can look at it using the web
+interface of bitbucket, which can be quite informative.
+
 
 > ## Password Managers
 >
@@ -173,7 +149,7 @@ Branch master set up to track remote branch master from origin.
 
 Our local and remote repositories are now in this state:
 
-![GitHub Repository After First Push](../fig/github-repo-after-first-push.svg)
+![bitbucket Repository After First Push](../fig/github-repo-after-first-push.svg)
 
 > ## The '-u' Flag
 >
@@ -198,23 +174,23 @@ Already up-to-date.
 
 Pulling has no effect in this case because the two repositories are already
 synchronized.  If someone else had pushed some changes to the repository on
-GitHub, though, this command would download them to our local repository.
+bitbucket, though, this command would download them to our local repository.
 
-> ## GitHub GUI
+> ## bitbucket GUI
 >
-> Browse to your `planets` repository on GitHub.
+> Browse to your `planets` repository on bitbucket.
 > Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 > Hover over, and click on, the three buttons to the right of each commit.
 > What information can you gather/explore from these buttons?
 > How would you get that same information in the shell?
 {: .challenge}
 
-> ## GitHub Timestamp
+> ## bitbucket Timestamp
 >
-> Create a remote repository on GitHub.  Push the contents of your local
+> Create a remote repository on bitbucket.  Push the contents of your local
 > repository to the remote.  Make changes to your local repository and push
 > these changes.  Go to the repo you just created on Github and check the
-> [timestamps]({{ page.root }}/reference/#timestamp) of the files.  How does GitHub record
+> [timestamps]({{ page.root }}/reference/#timestamp) of the files.  How does bitbucket record
 > times, and why?
 {: .challenge}
 
@@ -242,9 +218,9 @@ GitHub, though, this command would download them to our local repository.
 > done with this exercise.
 {: .challenge}
 
-> ## GitHub License and README files
+> ## bitbucket License and README files
 >
-> In this section we learned about creating a remote repository on GitHub, but when you initialized your
-> GitHub repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when
+> In this section we learned about creating a remote repository on bitbucket, but when you initialized your
+> bitbucket repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when
 > you tried to link your local and remote repositories?
 {: .challenge}

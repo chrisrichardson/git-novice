@@ -19,16 +19,16 @@ keypoints:
 
 Let's create a file called `mars.txt` that contains some notes
 about the Red Planet's suitability as a base.
-(We'll use `nano` to edit the file;
+(We'll use `gedit` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier.)
 
 ~~~
-$ nano mars.txt
+$ gedit mars.txt
 ~~~
 {: .bash}
 
-Type the text below into the `mars.txt` file:
+Type some text into the `mars.txt` file, e.g.:
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -108,9 +108,8 @@ Changes to be committed:
 {: .output}
 
 Git now knows that it's supposed to keep track of `mars.txt`,
-but it hasn't recorded these changes as a commit yet.
-To get it to do that,
-we need to run one more command:
+but it hasn't recorded these changes as being final yet.
+To get it to do that, we need to run one more command:
 
 ~~~
 $ git commit -m "Start notes on Mars as a base"
@@ -129,12 +128,12 @@ Git takes everything we have told it to save by using `git add`
 and stores a copy permanently inside the special `.git` directory.
 This permanent copy is called a [commit]({{ page.root }}/reference/#commit)
 (or [revision]({{ page.root }}/reference/#revision)) and its short identifier is `f22b25e`
-(Your commit may have another identifier.)
+(Your commit will have a different identifier.)
 
 We use the `-m` flag (for "message")
 to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
 If we just run `git commit` without the `-m` option,
-Git will launch `nano` (or whatever other editor we configured as `core.editor`)
+Git will launch `gedit` (or whatever other editor we configured as `core.editor`)
 so that we can write a longer message.
 
 [Good commit messages][commit-messages] start with a brief (<50 characters) summary of
@@ -191,11 +190,11 @@ and the log message Git was given when the commit was created.
 {: .callout}
 
 Now suppose Dracula adds more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
+(Again, we'll edit with `gedit` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano mars.txt
+$ gedit mars.txt
 $ cat mars.txt
 ~~~
 {: .bash}
@@ -352,7 +351,7 @@ First,
 we'll add another line to the file:
 
 ~~~
-$ nano mars.txt
+$ gedit mars.txt
 $ cat mars.txt
 ~~~
 {: .bash}
@@ -499,7 +498,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > $ git log -1
 > ~~~
 > {: .bash}
-> 
+>
 > ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 > Author: Vlad Dracula <vlad@tran.sylvan.ia>
@@ -568,10 +567,10 @@ repository (`git commit`):
 >
 > 1. `$ git commit -m "my recent changes"`
 >
-> 2. `$ git init myfile.txt`  
+> 2. `$ git init myfile.txt`
 >    `$ git commit -m "my recent changes"`
 >
-> 3. `$ git add myfile.txt`  
+> 3. `$ git add myfile.txt`
 >    `$ git commit -m "my recent changes"`
 >
 > 4. `$ git commit -m myfile.txt "my recent changes"`
@@ -601,7 +600,7 @@ repository (`git commit`):
 > >
 > > First we make our changes to the `mars.txt` and `venus.txt` files:
 > > ~~~
-> > $ nano mars.txt
+> > $ gedit mars.txt
 > > $ cat mars.txt
 > > ~~~
 > > {: .bash}
@@ -610,7 +609,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano venus.txt
+> > $ gedit venus.txt
 > > $ cat venus.txt
 > > ~~~
 > > {: .bash}

@@ -33,12 +33,8 @@ $ git config --global color.ui "auto"
 
 Please use your own name and email address instead of Dracula's.
 This user name and email will be associated with your subsequent Git activity,
-which means that any changes pushed to
-[GitHub](http://github.com/),
-[BitBucket](http://bitbucket.org/),
-[GitLab](http://gitlab.com/) or
-another Git host server
-in a later lesson will include this information.
+which means that any changes pushed to an online Git host server in a
+later lesson will include this information.
 If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 
 He also has to set his favorite text editor, following this table:
@@ -77,7 +73,9 @@ $ git config --list
 {: .bash}
 
 You can change your configuration as many times as you want: just use the
-same commands to choose another editor or update your email address.
+same commands to choose another editor or update your email
+address. On Linux, the settings are saved in a file called
+`.gitconfig` in your home directory.
 
 > ## Proxy
 >

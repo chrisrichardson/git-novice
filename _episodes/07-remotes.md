@@ -1,5 +1,5 @@
 ---
-title: Remotes in GitHub
+title: Remotes
 teaching: 30
 exercises: 0
 questions:
@@ -22,16 +22,18 @@ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](http://github.com), [BitBucket](http://bitbucket.org) or
-[GitLab](http://gitlab.com/) to hold those master copies; we'll explore the pros
-and cons of this in the final section of this lesson.
+[GitLab](http://gitlab.com/) to hold those master copies; we'll explore the pros and cons of this in the final section of this lesson.
 
-Let's start by sharing the changes we've made to our current project with the
-world.  Log in to GitHub, then click on the icon in the top right corner to
+Let's start by sharing the changes we've made to our current project
+with the world. Create an account on bitbucket
+(www.bitbucket.org). Bitbucket have an academic programme, which
+allows you to have unlimited private repositories (unlike some other
+websites). You can sign up for this, if you want to.
+
+Log in to Bitbucket, then click on the menu "Repositories" and
 create a new repository called `planets`:
 
 ![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
-
-Name your repository "planets" and then click "Create Repository":
 
 ![Creating a Repository on GitHub (Step 2)](../fig/github-create-repo-02.png)
 
@@ -40,7 +42,7 @@ information on how to configure your local repository:
 
 ![Creating a Repository on GitHub (Step 3)](../fig/github-create-repo-03.png)
 
-This effectively does the following on GitHub's servers:
+This effectively does the following on Bitbucket's servers:
 
 ~~~
 $ mkdir planets
@@ -81,7 +83,7 @@ Copy that URL from the browser, go into the local `planets` repository, and run
 this command:
 
 ~~~
-$ git remote add origin https://github.com/vlad/planets.git
+$ git remote add origin https://git@bitbucket.org/vlad/planets.git
 ~~~
 {: .bash}
 
@@ -96,13 +98,13 @@ $ git remote -v
 {: .bash}
 
 ~~~
-origin   https://github.com/vlad/planets.git (push)
-origin   https://github.com/vlad/planets.git (fetch)
+origin   https://bitbucket.org/vlad/planets.git (push)
+origin   https://bitbucket.org/vlad/planets.git (fetch)
 ~~~
 {: .output}
 
 The name `origin` is a local nickname for your remote repository: we could use
-something else if we wanted to, but `origin` is by far the most common choice.
+something else if we wanted to, but `origin` is the default.
 
 Once the nickname `origin` is set up, this command will push the changes from
 our local repository to the repository on GitHub:
@@ -118,7 +120,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 821 bytes, done.
 Total 9 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets
+To https://bitbucket.org/vlad/planets
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ~~~

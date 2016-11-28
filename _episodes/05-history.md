@@ -17,7 +17,7 @@ keypoints:
 ---
 
 As we saw in the previous lesson, we can refer to commits by their
-identifiers.  You can refer to the _most recent commit_ of the working
+identifiers.  You can also refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
 We've been adding one line at a time to `mars.txt`, so it's easy to track our
@@ -25,7 +25,7 @@ progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `mars.txt`.
 
 ~~~
-$ nano mars.txt
+$ gedit mars.txt
 $ cat mars.txt
 ~~~
 {: .bash}
@@ -59,7 +59,7 @@ index b36abfd..0848c8d 100644
 {: .output}
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
-real goodness in all this is when you can refer to previous commits.  We do
+real advantage is that you can also refer to previous commits.  We do
 that by adding `~1` to refer to the commit one before `HEAD`.
 
 ~~~
@@ -162,13 +162,12 @@ index df0654a..b36abfd 100644
 ~~~
 {: .output}
 
-All right! So
-we can save changes to files and see what we've changed—now how
-can we restore older versions of things?
+We can save changes to files and see what we've changed.
+How can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:
 
 ~~~
-$ nano mars.txt
+$ gedit mars.txt
 $ cat mars.txt
 ~~~
 {: .bash}
@@ -215,7 +214,7 @@ But the Mummy will appreciate the lack of humidity
 {: .output}
 
 As you might guess from its name,
-`git checkout` checks out (i.e., restores) an old version of a file.
+`git checkout` checks out (i.e. restores) an old version of a file.
 In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
@@ -334,9 +333,9 @@ moving backward and forward in time becomes much easier.
 >
 > ~~~
 > $ cd planets
-> $ nano venus.txt #input the following text: Venus is beautiful and full of love
+> $ gedit venus.txt #input the following text: Venus is beautiful and full of love
 > $ git add venus.txt
-> $ nano venus.txt #add the following text: Venus is too hot to be suitable as a base
+> $ gedit venus.txt #add the following text: Venus is too hot to be suitable as a base
 > $ git commit -m "comments on Venus as an unsuitable base"
 > $ git checkout HEAD venus.txt
 > $ cat venus.txt #this will print the contents of venus.txt to the screen

@@ -10,8 +10,7 @@ keypoints:
 - "`git init` initializes a repository."
 ---
 
-Once Git is configured,
-we can start using it.
+Once Git is configured, we can start using it.
 Let's create a directory for our work and then move into that directory:
 
 ~~~
@@ -20,8 +19,8 @@ $ cd planets
 ~~~
 {: .bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)—a place where
-Git can store versions of our files:
+Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)
+— a place where Git can store versions of our files:
 
 ~~~
 $ git init
@@ -93,7 +92,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ## Solution
 > >
 > > Git repositories can interfere with each other if they are "nested" in the
-> > directory of another: the outer repository will try to version-control 
+> > directory of another: the outer repository will try to version-control
 > > the inner repository. Therefore, it's best to create each new Git
 > > repository in a separate directory. To be sure that there is no conflicting
 > > repository in the directory, check the output of `git status`. If it looks

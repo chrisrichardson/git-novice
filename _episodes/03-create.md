@@ -49,8 +49,7 @@ $ ls -a
 {: .output}
 
 Git stores information about the project in this special sub-directory.
-If we ever delete it,
-we will lose the project's history.
+If we ever delete it, we will lose the project's history.
 
 We can check that everything is set up correctly
 by asking Git to tell us the status of our project:

@@ -41,7 +41,7 @@ You still need a valid password, of course.
 
 Everything today will be done from the command line. You don't really
 need an in-depth knowledge of Unix to do this, but familiarity with
-the basics (`cd`, `ls` etc.) is important. Additionally you need to be
+the basics (`cd`, `ls`, `mkdir` etc.) is important. Additionally you need to be
 able to use an editor - I recommend using `gedit` on the PWF
 workstations. There are some graphical tools for Git available for
 Windows and Mac, but we won't cover those today. Once you understand

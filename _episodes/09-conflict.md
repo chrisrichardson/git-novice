@@ -12,12 +12,14 @@ keypoints:
 - "The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved."
 ---
 
-As soon as people can work in parallel, it's likely someone's going to step on someone
-else's toes.  This will even happen with a single person: if we are working on
-a piece of software on both our laptop and a server in the lab, we could make
-different changes to each copy.  Version control helps us manage these
-[conflicts]({{ page.root }}/reference/#conflicts) by giving us tools to
-[resolve]({{ page.root }}/reference/#resolve) overlapping changes.
+As soon as people can work in parallel, it's likely someone's going to
+step on someone else's toes.  This will even happen with a single
+person: if we are working on a piece of software on both our laptop
+and a server in the lab, we could make different changes to each copy.
+Version control helps us manage these
+[conflicts]({{ page.root }}/reference/#conflicts)
+by giving us tools to [resolve]({{ page.root }}/reference/#resolve)
+overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
 `mars.txt` currently looks like this in both partners' copies of our `planets`

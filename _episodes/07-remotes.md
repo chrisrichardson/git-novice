@@ -119,11 +119,6 @@ Branch master set up to track remote branch master from origin.
 ~~~
 {: .output}
 
-The complete history (such that it is) of our repository has now been
-transferred to the online repository. We can look at it using the web
-interface of bitbucket, which can be quite informative.
-
-
 > ## Password Managers
 >
 > If your operating system has a password manager configured, `git push` will
@@ -151,13 +146,6 @@ Our local and remote repositories are now in this state:
 
 ![bitbucket Repository After First Push](../fig/github-repo-after-first-push.svg)
 
-> ## The '-u' Flag
->
-> You may see a `-u` option used with `git push` in some documentation.  It is
-> related to concepts we cover in our intermediate lesson, and can safely be
-> ignored for now.
-{: .callout}
-
 We can pull changes from the remote repository to the local one as well:
 
 ~~~
@@ -166,7 +154,7 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-From https://github.com/vlad/planets
+From https://bitbucket.org/vlad/planets
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
@@ -176,23 +164,17 @@ Pulling has no effect in this case because the two repositories are already
 synchronized.  If someone else had pushed some changes to the repository on
 bitbucket, though, this command would download them to our local repository.
 
-> ## bitbucket GUI
->
-> Browse to your `planets` repository on bitbucket.
-> Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
-> Hover over, and click on, the three buttons to the right of each commit.
-> What information can you gather/explore from these buttons?
-> How would you get that same information in the shell?
-{: .challenge}
+## bitbucket GUI
 
-> ## bitbucket Timestamp
->
-> Create a remote repository on bitbucket.  Push the contents of your local
-> repository to the remote.  Make changes to your local repository and push
-> these changes.  Go to the repo you just created on Github and check the
-> [timestamps]({{ page.root }}/reference/#timestamp) of the files.  How does bitbucket record
-> times, and why?
-{: .challenge}
+Browse to your `planets` repository on bitbucket.
+ * Try clicking on the 'Source' button on the left. You can use this to
+   browse all the files in your repository. By using the dropdown menu
+   with the git hash (e.g. d69e7a9) you can choose which version of the
+   file to view.
+ * Now look at the 'Commits' button. This shows a graphical
+   representation of what you would see with `git log`. Again the git
+   commit hashes are shown, and if you click on one, it will give you
+   the `git diff` between the two neighbouring versions.
 
 > ## Push vs. Commit
 >
@@ -203,7 +185,7 @@ bitbucket, though, this command would download them to our local repository.
 > ## Fixing Remote Settings
 >
 > It happens quite often in practice that you made a typo in the
-> remote URL. This exercice is about how to fix this kind of issues.
+> remote URL. This exercise is about how to fix this kind of issue.
 > First start by adding a remote with an invalid URL:
 >
 > ~~~
@@ -213,14 +195,19 @@ bitbucket, though, this command would download them to our local repository.
 >
 > Do you get an error when adding the remote? Can you think of a
 > command that would make it obvious that your remote URL was not
-> valid? Can you figure out how to fix the URL (tip: use `git remote
+> valid?
+> ~~~
+> git push broken master
+> ~~~
+Can you figure out how to fix the URL (tip: use `git remote
 > -h`)? Don't forget to clean up and remove this remote once you are
 > done with this exercise.
 {: .challenge}
 
-> ## bitbucket License and README files
+> ## bitbucket README file
 >
-> In this section we learned about creating a remote repository on bitbucket, but when you initialized your
-> bitbucket repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when
-> you tried to link your local and remote repositories?
+> In this section we learned about creating a remote repository on
+> bitbucket. The 'Overview' tab suggests you create a README.
+> Try doing that by clicking on the "Create a README" button. What
+> effect will this have on your repository?
 {: .challenge}

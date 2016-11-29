@@ -25,10 +25,11 @@ play Owner and Collaborator.
 {: .callout}
 
 The Owner needs to give the Collaborator access. On Bitbucket, click
-the settings button on the right, then select Collaborators, and enter
-your partner's username.
+the settings (gear) button on the left, then select "User and group
+access", and enter your partner's username or email, and give them
+"Write access". Click Add.
 
-![Adding Collaborators on Bitbucket](../fig/github-add-collaborators.png)
+![Adding Collaborators on Bitbucket](../fig/bitbucket-add-user.png)
 
 To accept access to the Owner's repo, the Collaborator
 needs to go to [https://github.com/notifications](https://github.com/notifications).

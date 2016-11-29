@@ -27,7 +27,7 @@ commands.
 ### Using a laptop
 Alternatively, you can use
 your own laptop to log into the PWF remotely using an SSH client
-(e.g. MobaXterm).
+(e.g. MobaXterm for Windows).
 ~~~
 ssh crsid@linux.pwf.cam.ac.uk
 ~~~

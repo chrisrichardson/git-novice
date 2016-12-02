@@ -77,4 +77,22 @@ git remote -v
 
 Now we will see two possible locations, one the "origin" (which we can
 pull from but not push to), and the other is "myfork" which we have
-full access to.
+full access to:
+
+~~~
+myfork	https://vlad@bitbucket.org/vlad/slot (fetch)
+myfork	https://vlad@bitbucket.org/vlad/slot (push)
+origin	https://github.com/odhyan/slot.git (fetch)
+origin	https://github.com/odhyan/slot.git (push)
+~~~
+
+Let's push back to "myfork"
+
+~~~
+git push myfork master
+~~~
+
+You can continue changing the files, doing `git add`, `git commit` and
+`git push myfork master` as much as you like. Try pushing to `origin
+master` and see what happens. Take a look at the commits on the
+bitbucket website.

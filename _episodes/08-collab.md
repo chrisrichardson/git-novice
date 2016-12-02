@@ -27,13 +27,10 @@ play Owner and Collaborator.
 The Owner needs to give the Collaborator access. On Bitbucket, click
 the settings (gear) button on the left, then select "User and group
 access", and enter your partner's username or email, and give them
-"Write access". Click Add.
+"Write access". Click Add. The Collaborator should receive an email
+notifying them they have access.
 
 ![Adding Collaborators on Bitbucket](../fig/bitbucket-add-user.png)
-
-# FIXME
-To accept access to the Owner's repo, the Collaborator
-needs to go to [https://github.com/notifications](https://github.com/notifications). Once there, you can accept access to the Owner's repo.
 
 Next, the Collaborator needs to download a copy of the Owner's
 repository to their  machine. This is called "cloning a repo". To
@@ -165,5 +162,3 @@ bitbucket) are back in sync.
 > allows you to make a comment, which will be emailed to the contributor.
 >
 {: .challenge}
-
-

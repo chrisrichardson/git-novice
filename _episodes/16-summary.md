@@ -7,6 +7,9 @@ questions:
 objectives:
 - "Reiterate the key points and look at a typical workflow"
 - "How can you fix things when they go wrong"
+keypoints:
+- "It is hard to remember. Practice makes perfect."
+- "Fill out the [feedback form](http://feedback.training.cam.ac.uk/ucs/form.php)"
 ---
 
 This page is really just a revision reminder and cheat-sheet. There is

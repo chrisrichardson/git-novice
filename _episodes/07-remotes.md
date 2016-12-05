@@ -192,7 +192,7 @@ Browse to your `planets` repository on bitbucket.
 > First start by adding a remote with an invalid URL:
 >
 > ~~~
-> git remote add broken https://github.com/this/url/is/invalid
+> git remote add broken https://bitbucket.org/this/url/is/invalid
 > ~~~
 > {: .bash}
 >

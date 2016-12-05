@@ -560,7 +560,7 @@ repository (`git commit`):
 > {: .solution}
 {: .challenge}
 
-![Commit messages](../fig/git_commit.png)
+[![Commit messages](../fig/git_commit.png)](https://xkcd.com/1296/)
 
 
 > ## Committing Changes to Git

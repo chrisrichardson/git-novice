@@ -66,7 +66,7 @@ across different computers facilitating collaboration among different people.
 > the same files concurrently.
 {: .callout}
 
-![Using git](../fig/git-xkcd.png)
+[![Using git](../fig/git-xkcd.png)](https://xkcd.com/1597/)
 
 This course is about Git, but we won't be able to cover everything about it - this is a course for beginners, not experts.
 

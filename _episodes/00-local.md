@@ -12,6 +12,8 @@ keypoints:
 - "There are some Git tools for Windows/Mac too."
 ---
 
+## [Welcome](../Welcome.pdf)
+
 ## Using the PWF
 
 You should have a PC on your desk that you can log into with your
@@ -53,3 +55,11 @@ graphical tool later.
 As you can see, the material today has been adapted from a course
 given by the "software carpentry" team. The general approach will be
 to work along with the instructor, typing commands in as we go.
+
+### Web browser
+
+You can follow the source material with a web browser by going to:
+
+* [http://chrisrichardson.github.io](http://chrisrichardson.github.io)
+
+* (the notes are derived from the software carpentry site [http://swcarpentry.github.io/git-novice/](http://swcarpentry.github.io/git-novice/))

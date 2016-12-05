@@ -41,12 +41,15 @@ $ git clone https://bitbucket.org/vlad/planets.git ~/Desktop/vlad-planets
 ~~~
 {: .bash}
 
-Replace 'vlad' with the Owner's username.
+Replace 'vlad' with the Owner's username. Note that we have specified
+the folder name as `~/Desktop/vlad-planets` instead of accepting the
+default of `planets`. This can be useful to `git clone` repositories to
+folders of your choice.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
 
-As Collaborator, you can now make a change in your clone of the Owner's repository,
-in exactly the same way as we've been doing before:
+As Collaborator, you can now make a change in your clone of the
+Owner's repository, in exactly the same way as we've been doing before:
 
 ~~~
 $ cd ~/Desktop/vlad-planets

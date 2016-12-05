@@ -46,6 +46,9 @@ $ git init
 
 Our local repository still contains our earlier work on `mars.txt`, but the
 remote repository on bitbucket doesn't contain any files yet.
+
+![New Repository](../fig/git-freshly-made-bitbucket-repo.png)
+
 The next step is to connect the two repositories.  We do this by making the
 bitbucket repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
 
@@ -144,7 +147,7 @@ Branch master set up to track remote branch master from origin.
 
 Our local and remote repositories are now in this state:
 
-![bitbucket Repository After First Push](../fig/github-repo-after-first-push.svg)
+![bitbucket Repository After First Push](../fig/github-repo-after-first-push.png)
 
 We can pull changes from the remote repository to the local one as well:
 

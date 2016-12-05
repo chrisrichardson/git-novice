@@ -560,6 +560,9 @@ repository (`git commit`):
 > {: .solution}
 {: .challenge}
 
+![Commit messages](../fig/git_commit.png)
+
+
 > ## Committing Changes to Git
 >
 > Which command(s) below would save the changes of `myfile.txt`

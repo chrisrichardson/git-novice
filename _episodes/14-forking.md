@@ -38,7 +38,8 @@ origin	https://github.com/odhyan/slot.git (push)
 
 You can try out the slot machine my navigating your browser to:
 `file:///home/crsid/Desktop/slot/index.html`. Now let's edit the file
-`slot.js` and make some trivial change.
+`slot.js` and make some trivial change. For example, we can change the
+text on line 178 (search for "You Lose").
 
 ~~~
 git diff
@@ -62,14 +63,19 @@ index b2234e7..fd1b07c 100644
 
 Unless we have contacted the author we can't push changes back to
 their repository. Anyway, you probably don't even have a password for
-github yet!
+github yet! We could continue editing, and making any changes we
+want, doing `git add` and `git commit` as we go, but we can't push any
+changes back to "origin".
 
-Let's add another repo on bitbucket, and push to that instead.
-We need to give it a local name for the push/pull location, e.g. "myfork".
+Let's create another new private repo called "slot" on bitbucket, and
+push to that instead. We need to give it a local name for the
+push/pull location, e.g. "myfork".
 
 ~~~
 git remote add myfork https://vlad@bitbucket.org/vlad/slot
 ~~~
+
+As usual, replace "vlad" with your username.
 
 ~~~
 git remote -v
@@ -96,3 +102,4 @@ You can continue changing the files, doing `git add`, `git commit` and
 `git push myfork master` as much as you like. Try pushing to `origin
 master` and see what happens. Take a look at the commits on the
 bitbucket website.
+

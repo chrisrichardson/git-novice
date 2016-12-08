@@ -154,6 +154,24 @@ bitbucket) are back in sync.
 > command line? And online with bitbucket?
 {: .challenge}
 
+> ## Other features in bitbucket website
+>
+> You will have noticed a lot of other buttons on the left side in bitbucket.
+> "Overview", "Source" and "Commits" are easy to understand. There are some
+> other things which are useful for more advanced users, such as "Branches"
+> and "Pull Requests". We will briefly touch on these later. "Downloads"
+> allows you to download the entire repository as a zip file, and also to
+> add other files.
+>
+> Go to "Settings" and under "Issues" click on "Issue tracker". Enable
+> the "Private issue tracker". Now you can your collaborators can
+> track any bugs or other issues in your repository. Go back to the
+> main menu and try adding an "Issue". You can also enable a "Wiki"
+> if you want to.
+{: .callout}
+
+
+
 > ## Comment Changes in bitbucket
 >
 > The Collaborator has some questions about one line change made by
@@ -165,3 +183,4 @@ bitbucket) are back in sync.
 > allows you to make a comment, which will be emailed to the contributor.
 >
 {: .challenge}
+

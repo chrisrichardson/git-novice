@@ -20,41 +20,40 @@ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can also refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `mars.txt`, so it's easy to track our
+We've been adding one line at a time to `margherita.md`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `mars.txt`.
+let's make a change to `margherita.md`.
 
 ~~~
-$ gedit mars.txt
-$ cat mars.txt
+$ nano margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-An ill-considered change
+
+Drink slowly
 ~~~
 {: .output}
 
 Now, let's see what we get.
 
 ~~~
-$ git diff HEAD mars.txt
+$ git diff HEAD margherita.md
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index b36abfd..0848c8d 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,3 +1,4 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
- But the Mummy will appreciate the lack of humidity
-+An ill-considered change.
+diff --git a/margherita.md b/margherita.md
+index e47cfe5..1b56c7c 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -12,3 +12,5 @@
+4. Add triple sec
+5. Add tequila
+6. Mix
++
++Drink slowly
 ~~~
 {: .output}
 
@@ -63,7 +62,7 @@ real advantage is that you can also refer to previous commits.  We do
 that by adding `~1` to refer to the commit one before `HEAD`.
 
 ~~~
-$ git diff HEAD~1 mars.txt
+$ git diff HEAD~1 margherita.md
 ~~~
 {: .bash}
 
@@ -72,36 +71,58 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to old
 commits:
 
 ~~~
-$ git diff HEAD~1 mars.txt
+$ git diff HEAD~1 margherita.md
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index 573eea0..1b56c7c 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -6,4 +6,11 @@
+4. Ice
+
+## Method
+-Chill glass, add ice, lime juice, triple sec and tequila
++1. Chill glass
++2. Add ice
++3. Add lime juice
++4. Add triple sec
++5. Add tequila
++6. Mix
++
++Drink slowly
 ~~~
 {: .output}
 
 ~~~
-$ git diff HEAD~2 mars.txt
+$ git diff HEAD~2 margherita.md
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index 77e5f25..1b56c7c 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,4 +3,14 @@
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
+-4. Ice
++4. Ice
++
++## Method
++1. Chill glass
++2. Add ice
++3. Add lime juice
++4. Add triple sec
++5. Add tequila
++6. Mix
++
++Drink slowly
+
 ~~~
 {: .output}
 
@@ -121,23 +142,34 @@ and "unique" really does mean unique:
 every change to any set of files on any computer
 has a unique 40-character identifier.
 Our first commit was given the ID
-f22b25e3233b4645dabd0d81e651fe074bd8e73b,
+373fb4773ff2ab36416485bb5e86270d46ad415b,
 so let's try this:
 
 ~~~
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+$ git diff 373fb4773ff2ab36416485bb5e86270d46ad415b margherita.md
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index eafc011..1b56c7c 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,3 +3,14 @@
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
++4. Ice
++
++## Method
++1. Chill glass
++2. Add ice
++3. Add lime juice
++4. Add triple sec
++5. Add tequila
++6. Mix
++
++Drink slowly
 ~~~
 {: .output}
 
@@ -146,19 +178,30 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters:
 
 ~~~
-$ git diff f22b25e mars.txt
+$ git diff 373fb4 margherita.md
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index eafc011..1b56c7c 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,3 +3,14 @@
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
++4. Ice
++
++## Method
++1. Chill glass
++2. Add ice
++3. Add lime juice
++4. Add triple sec
++5. Add tequila
++6. Mix
++
++Drink slowly
 ~~~
 {: .output}
 
@@ -167,13 +210,13 @@ How can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:
 
 ~~~
-$ gedit mars.txt
-$ cat mars.txt
+$ nano margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-We will need to manufacture our own oxygen
+Add orange juice
 ~~~
 {: .output}
 
@@ -191,7 +234,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   margherita.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -201,15 +244,28 @@ We can put things back the way they were
 by using `git checkout`:
 
 ~~~
-$ git checkout HEAD mars.txt
-$ cat mars.txt
+$ git checkout HEAD margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+# Margherita
+## Ingredients
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
+4. Ice
+
+## Method
+1. Chill glass
+2. Add ice
+3. Add lime juice
+4. Add triple sec
+5. Add tequila
+6. Mix
+
+Drink slowly
 ~~~
 {: .output}
 
@@ -222,7 +278,7 @@ If we want to go back even further,
 we can use a commit identifier instead:
 
 ~~~
-$ git checkout f22b25e mars.txt
+$ git checkout f22b25e margherita.md
 ~~~
 {: .bash}
 
@@ -231,12 +287,12 @@ $ git checkout f22b25e mars.txt
 > Above we used
 >
 > ~~~
-> $ git checkout f22b25e mars.txt
+> $ git checkout f22b25e margherita.md
 > ~~~
 > {: .bash}
 >
-> to revert mars.txt to its state after the commit f22b25e.
-> If you forget `mars.txt` in that command, Git will tell you that "You are in
+> to revert margherita.md to its state after the commit f22b25e.
+> If you forget `margherita.md` in that command, Git will tell you that "You are in
 > 'detached HEAD' state." In this state, you shouldn't make any changes.
 > You can fix this by reattaching your head using ``git checkout master``
 {: .callout}
@@ -329,55 +385,55 @@ moving backward and forward in time becomes much easier.
 
 > ## Understanding Workflow and History
 >
-> What is the output of cat venus.txt at the end of this set of commands?
+> What is the output of cat manhattan.md at the end of this set of commands?
 >
 > ~~~
-> $ cd planets
-> $ gedit venus.txt #input the following text: Venus is beautiful and full of love
-> $ git add venus.txt
-> $ gedit venus.txt #add the following text: Venus is too hot to be suitable as a base
-> $ git commit -m "comments on Venus as an unsuitable base"
-> $ git checkout HEAD venus.txt
-> $ cat venus.txt #this will print the contents of venus.txt to the screen
+> $ cd cocktails
+> $ nano manhattan.md #input the following text: Manhattan cocktail
+> $ git add manhattan.md
+> $ nano manhattan.md #add the following text: Whiskey, vermouth, bitters
+> $ git commit -m "Add recipe for manhattan"
+> $ git checkout HEAD manhattan.md
+> $ cat manhattan.md #this will print the contents of manhattan.md to the screen
 > ~~~
 > {: .bash}
 >
 > 1.
 >
 > ~~~
-> Venus is too hot to be suitable as a base
+> Manhattan cocktail
 > ~~~
 > {: .output}
 >
 > 2.
 >
 > ~~~
-> Venus is beautiful and full of love
+> Whiskey, vermouth, bitters
 > ~~~
 > {: .output}
 >
 > 3.
 >
 > ~~~
-> Venus is beautiful and full of love
-> Venus is too hot to be suitable as a base
+> Manhattan cocktail
+> Whiskey, vermouth, bitters
 > ~~~
 > {: .output}
 >
 > 4.
 >
 > ~~~
-> Error because you have changed venus.txt without committing the changes
+> Error because you have changed manhattan.md without committing the changes
 > ~~~
 > {: .output}
 {: .challenge}
 
 > ## Checking Understanding of `git diff`
 >
-> Consider this command: `git diff HEAD~3 mars.txt`. What do you predict this command
+> Consider this command: `git diff HEAD~3 margherita.md`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
 >
-> Try another command, `git diff [ID] mars.txt`, where [ID] is replaced with
+> Try another command, `git diff [ID] margherita.md`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
 > and what does happen?
 {: .challenge}
@@ -386,7 +442,7 @@ moving backward and forward in time becomes much easier.
 >
 > `git checkout` can be used to restore a previous commit when unstaged changes have
 > been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `mars.txt`, add that change, and use `git checkout` to see if
+> Make a change to `margherita.md`, add that change, and use `git checkout` to see if
 > you can remove your change.
 {: .challenge}
 
@@ -395,16 +451,16 @@ moving backward and forward in time becomes much easier.
 > Exploring history is an important part of git, often it is a challenge to find
 > the right commit ID, especially if the commit is from several months ago.
 >
-> Imaging the `planets` project has more than 50 files.
-> You would like to find a commit with specific text in `mars.txt` is modified.
+> Imagine the `cocktails` project has more than 50 files.
+> You would like to find a commit with specific text in `margherita.md` is modified.
 > When you type `git log`, a very long list appeared,
 > How can you narrow down the search?
 >
 > Recorded that the `git diff` command allow us to explore one specific file,
-> e.g. `git diff mars.txt`. We can apply the similar idea here.
+> e.g. `git diff margherita.md`. We can apply the similar idea here.
 >
 > ~~~
-> $ git log mars.txt
+> $ git log margherita.md
 > ~~~
 > {: .bash}
 >
@@ -415,7 +471,7 @@ moving backward and forward in time becomes much easier.
 > Is that possible to combine both? Let's try the following:
 >
 > ~~~
-> $ git log --patch mars.txt
+> $ git log --patch margherita.md
 > ~~~
 > {: .bash}
 >

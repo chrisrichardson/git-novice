@@ -18,64 +18,48 @@ repository.
 
 ## Cloning a public repository
 
-First, let's choose a public repository to clone. We could use anything, but
-for example, how about a [Javascript Fruit Machine](https://github.com/odhyan/slot).
+First, let's choose a public repository to clone. There are lots of
+public repositories on github and bitbucket, and this is quite likely
+the first way you will really get to use revision control.
 
 ~~~
-git clone https://github.com/odhyan/slot
+git clone https://bitbucket.org/chris_richardson/wallis_pi
 ~~~
 
-Remember, this will clone into a folder called "slot" and will automatically set the "origin" to point to https://github.com/odhyan/slot
+Remember, this will clone into a folder called "wallis_pi" and will automatically set the "origin" to point to https://bitbucket.org/chris_richardson/wallis_pi
 
 ~~~
 git remote -v
 ~~~
 
 ~~~
-origin	https://github.com/odhyan/slot.git (fetch)
-origin	https://github.com/odhyan/slot.git (push)
+origin	https://github.com/chris_richardson/wallis_pi.git (fetch)
+origin	https://github.com/chris_richardson/wallis_pi.git (push)
 ~~~
 
-You can try out the slot machine my navigating your browser to:
-`file:///home/crsid/Desktop/slot/index.html`. Now let's edit the file
-`slot.js` and make some trivial change. For example, we can change the
-text on line 178 (search for "You Lose").
+Once you have made a copy of the repository, you can edit the files as usual.
 
-~~~
-git diff
-~~~
-
-~~~
-diff --git a/slot.js b/slot.js
-index b2234e7..fd1b07c 100644
---- a/slot.js
-+++ b/slot.js
-@@ -175,7 +175,7 @@ $(document).ready(function() {
-         if(win[a.pos] === win[b.pos] && win[a.pos] === win[c.pos]) {
-             res = "You Win!";
-         } else {
--            res = "You Lose";
-+            res = "Ha ha! You Lose";
-         }
-         $('#result').html(res);
-     }
-~~~
+This is a Python project, which calculates the value of pi, using a
+rather inefficient formula. You can test out the project on
+`linux.ds.cam.ac.uk` by running `python3 pi.py`. The other file is
+`bitbucket-pipelines.yml` which runs a test every time a change is
+made to the repository. Try changing the code, and see what effect
+it has on the test.
 
 Unless we have contacted the author we can't push changes back to
-their repository. Anyway, you probably don't even have a password for
-github yet! We could continue editing, and making any changes we
+their repository. We could continue editing, and making any changes we
 want, doing `git add` and `git commit` as we go, but we can't push any
 changes back to "origin".
 
-Let's create another new private repo called "slot" on bitbucket, and
+Let's create another new private repo called "wallis_pi" on bitbucket, and
 push to that instead. We need to give it a local name for the
 push/pull location, e.g. "myfork".
 
 ~~~
-git remote add myfork https://vlad@bitbucket.org/vlad/slot
+git remote add myfork https://your_name@bitbucket.org/your_name/wallis_pi
 ~~~
 
-As usual, replace "vlad" with your username.
+Replace "your_name" with your username.
 
 ~~~
 git remote -v
@@ -86,10 +70,10 @@ pull from but not push to), and the other is "myfork" which we have
 full access to:
 
 ~~~
-myfork	https://vlad@bitbucket.org/vlad/slot (fetch)
-myfork	https://vlad@bitbucket.org/vlad/slot (push)
-origin	https://github.com/odhyan/slot.git (fetch)
-origin	https://github.com/odhyan/slot.git (push)
+myfork	https://your_name@bitbucket.org/your_name/wallis_pi (fetch)
+myfork	https://your_name@bitbucket.org/your_name/wallis_pi (push)
+origin	https://bitbucket.org/chris_richardson/wallis_pi.git (fetch)
+origin	https://bitbucket.org/chris_richardson/wallis_pi.git (push)
 ~~~
 
 Let's push back to "myfork"
@@ -102,4 +86,3 @@ You can continue changing the files, doing `git add`, `git commit` and
 `git push myfork master` as much as you like. Try pushing to `origin
 master` and see what happens. Take a look at the commits on the
 bitbucket website.
-

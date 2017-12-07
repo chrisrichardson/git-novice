@@ -22,41 +22,45 @@ by giving us tools to [resolve]({{ page.root }}/reference/#resolve)
 overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`mars.txt` currently looks like this in both partners' copies of our `planets`
+`margherita.md` currently looks like this in both partners' copies of our `cocktails`
 repository:
 
 ~~~
-$ cat mars.txt
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
 ~~~
 {: .output}
 
 Let's add a line to one partner's copy only:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line added to Wolfman's copy
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
+4. Ice
 ~~~
 {: .output}
 
 and then push the change to bitbucket:
 
 ~~~
-$ git add mars.txt
+$ git add margherita.md
 $ git commit -m "Adding a line in our home copy"
 ~~~
 {: .bash}
@@ -78,7 +82,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 352 bytes, done.
 Total 3 (delta 1), reused 0 (delta 0)
-To https://bitbucket.org/vlad/planets
+To https://bitbucket.org/vlad/cocktails
    29aba7c..dabb4c8  master -> master
 ~~~
 {: .output}
@@ -88,23 +92,25 @@ make a different change to their copy
 *without* updating from bitbucket:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano margherita
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We added a different line in the other copy
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
+4. Water
 ~~~
 {: .output}
 
 We can commit the change locally:
 
 ~~~
-$ git add mars.txt
+$ git add margherita.md
 $ git commit -m "Adding a line in my copy"
 ~~~
 {: .bash}
@@ -123,9 +129,9 @@ $ git push origin master
 {: .bash}
 
 ~~~
-To https://bitbucket.org/vlad/planets.git
+To https://bitbucket.org/vlad/cocktails.git
  ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'https://bitbucket.org/vlad/planets.git'
+error: failed to push some refs to 'https://bitbucket.org/vlad/cocktails.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
 hint: before pushing again.
@@ -152,10 +158,10 @@ remote: Counting objects: 5, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 1), reused 3 (delta 1)
 Unpacking objects: 100% (3/3), done.
-From https://bitbucket.org/vlad/planets
+From https://bitbucket.org/vlad/cocktails
  * branch            master     -> FETCH_HEAD
-Auto-merging mars.txt
-CONFLICT (content): Merge conflict in mars.txt
+Auto-merging margherita.md
+CONFLICT (content): Merge conflict in margherita.md
 Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
@@ -164,18 +170,20 @@ Automatic merge failed; fix conflicts and then commit the result.
 and marks that conflict in the affected file:
 
 ~~~
-$ cat mars.txt
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
 <<<<<<< HEAD
-We added a different line in the other copy
+4. Water
 =======
-This line added to Wolfman's copy
+4. Ice
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
 ~~~
 {: .output}
@@ -194,24 +202,26 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ~~~
-$ cat mars.txt
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
+4. Crushed Ice
 ~~~
 {: .output}
 
 To finish merging,
-we add `mars.txt` to the changes being made by the merge
+we add `margherita.md` to the changes being made by the merge
 and then commit:
 
 ~~~
-$ git add mars.txt
+$ git add margherita.md
 $ git status
 ~~~
 {: .bash}
@@ -223,7 +233,7 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   mars.txt
+	modified:   margherita.md
 
 ~~~
 {: .output}
@@ -251,7 +261,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 697 bytes, done.
 Total 6 (delta 2), reused 0 (delta 0)
-To https://bitbucket.org/vlad/planets.git
+To https://bitbucket.org/vlad/cocktails.git
    dabb4c8..2abf2b1  master -> master
 ~~~
 {: .output}
@@ -270,11 +280,11 @@ remote: Counting objects: 10, done.
 remote: Compressing objects: 100% (4/4), done.
 remote: Total 6 (delta 2), reused 6 (delta 2)
 Unpacking objects: 100% (6/6), done.
-From https://bitbucket.org/vlad/planets
+From https://bitbucket.org/vlad/cocktails
  * branch            master     -> FETCH_HEAD
 Updating dabb4c8..2abf2b1
 Fast-forward
- mars.txt | 2 +-
+ margherita.md | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -282,15 +292,17 @@ Fast-forward
 We get the merged file:
 
 ~~~
-$ cat mars.txt
+$ cat margerita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+# Margherita
+## Ingredients
+1. Tequila
+2. Triple Sec
+3. Lime Juice
+4. Crushed Ice
 ~~~
 {: .output}
 

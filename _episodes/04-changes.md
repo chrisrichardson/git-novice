@@ -17,25 +17,47 @@ keypoints:
 - "Always write a log message when committing changes."
 ---
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
-(We'll use `gedit` to edit the file;
+Let's start off by learning some Markdown. Markdown is a rich text format,
+which allows us to add a few features (such as bold, italic,
+underline, and weblinks) to normal text. This website is actually
+written in Markdown. You can find a [Markdown
+Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+online.
+Basically, headers start with a `#` symbol:
+
+`# Header 1`
+# Header 1
+`### Header 3`
+### Header 3
+
+Emphasis is done with asterisks `**bold**` = **bold**, and lists are
+just numbered. See the cheatsheet.
+
+Let's create a file called `margherita.md` that contains some notes
+about making a margherita cocktail. (Markdown files usually have the
+`.md` suffix).
+(We'll use `nano` to edit the file;
 you can use whatever editor you like.
-In particular, this does not have to be the `core.editor` you set globally earlier.)
+In particular, this does not have to be the `core.editor` you set
+globally earlier.)
 
 ~~~
-$ gedit mars.txt
+$ nano margherita.md
 ~~~
 {: .bash}
 
-Type some text into the `mars.txt` file, e.g.:
+Type some text into the `margherita.md` file, e.g.:
 
 ~~~
-Cold and dry, but everything is my favorite color
+# Margherita
+## Ingredients
+1. tequila
+2. triple sec
+3. lime juice
 ~~~
 {: .output}
 
-`mars.txt` now contains a single line, which we can see by running:
+`margherita.md` now contains a few lines, which we can see by running:
 
 ~~~
 $ ls
@@ -43,17 +65,21 @@ $ ls
 {: .bash}
 
 ~~~
-mars.txt
+margherita.md
 ~~~
 {: .output}
 
 ~~~
-$ cat mars.txt
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+# Margherita
+## Ingredients
+1. tequila
+2. triple sec
+3. lime juice
 ~~~
 {: .output}
 
@@ -73,7 +99,7 @@ Initial commit
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	mars.txt
+	margherita.md
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -83,7 +109,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add mars.txt
+$ git add margherita.md
 ~~~
 {: .bash}
 
@@ -102,24 +128,24 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   mars.txt
+	new file:   margherita.md
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `mars.txt`,
+Git now knows that it's supposed to keep track of `margherita.md`,
 but it hasn't recorded these changes as being final yet.
 To get it to do that, we need to run one more command:
 
 ~~~
-$ git commit -m "Start notes on Mars as a base"
+$ git commit -m "Start recipe for margherita"
 ~~~
 {: .bash}
 
 ~~~
-[master (root-commit) f22b25e] Start notes on Mars as a base
- 1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+[master (root-commit) 373fb47] Start recipe for margherita
+ 1 file changed, 5 insertions(+)
+ create mode 100644 margherita.md
 ~~~
 {: .output}
 
@@ -127,13 +153,13 @@ When we run `git commit`,
 Git takes everything we have told it to save by using `git add`
 and stores a copy permanently inside the special `.git` directory.
 This permanent copy is called a [commit]({{ page.root }}/reference/#commit)
-(or [revision]({{ page.root }}/reference/#revision)) and its short identifier is `f22b25e`
+(or [revision]({{ page.root }}/reference/#revision)) and its short identifier is `373fb47`
 (Your commit will have a different identifier.)
 
 We use the `-m` flag (for "message")
 to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
 If we just run `git commit` without the `-m` option,
-Git will launch `gedit` (or whatever other editor we configured as `core.editor`)
+Git will launch `nano` (or whatever other editor we configured as `core.editor`)
 so that we can write a longer message.
 
 [Good commit messages][commit-messages] start with a brief (<50 characters) summary of
@@ -163,11 +189,11 @@ $ git log
 {: .bash}
 
 ~~~
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+commit 373fb4773ff2ab36416485bb5e86270d46ad415b
+Author: Chris Richardson <chris@bpi.cam.ac.uk>
+Date:   Tue Dec 5 09:53:58 2017 +0000
 
-    Start notes on Mars as a base
+    Start recipe for margherita
 ~~~
 {: .output}
 
@@ -182,26 +208,30 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
+> If we run `ls` at this point, we will still see just one file called `margherita.md`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
 > (and so that we can't accidentally edit or delete an old version).
 {: .callout}
 
-Now suppose Dracula adds more information to the file.
-(Again, we'll edit with `gedit` and then `cat` the file to show its contents;
+Now suppose I add more information to the file.
+(Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ gedit mars.txt
-$ cat mars.txt
+$ nano margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+# Margherita
+## Ingredients
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
+4. Ice
 ~~~
 {: .output}
 
@@ -219,7 +249,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   margherita.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -242,13 +272,15 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+diff --git a/margherita.md b/margherita.md
+index eafc011..77e5f25 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,3 +3,4 @@
+ 1. Tequilia
+ 2. Triple Sec
+ 3. Lime Juice
++4. Ice
 ~~~
 {: .output}
 
@@ -261,7 +293,7 @@ If we break it down into pieces:
     comparing the old and new versions of the file.
 2.  The second line tells exactly which versions of the file
     Git is comparing;
-    `df0654a` and `315bf3a` are unique computer-generated labels for those versions.
+    `eafc011` and `77e5f25` are unique computer-generated labels for those versions.
 3.  The third and fourth lines once again show the name of the file being changed.
 4.  The remaining lines are the most interesting, they show us the actual differences
     and the lines on which they occur.
@@ -271,7 +303,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git commit -m "Add some ice"
 $ git status
 ~~~
 {: .bash}
@@ -282,7 +314,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   margherita.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -293,13 +325,13 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git add margherita.md
+$ git commit -m "Add some ice"
 ~~~
 {: .bash}
 
 ~~~
-[master 34961b1] Add concerns about effects of Mars' moons on Wolfman
+[master 34961b1] Add some ice
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -348,18 +380,24 @@ Let's watch as our changes to a file move from our editor
 to the staging area
 and into long-term storage.
 First,
-we'll add another line to the file:
+we'll add a few more lines to the file:
 
 ~~~
-$ gedit mars.txt
-$ cat mars.txt
+$ nano margherita.md
+$ cat margherita.md
 ~~~
 {: .bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+# Margherita
+## Ingredients
+1. Tequilia
+2. Triple Sec
+3. Lime Juice
+4. Ice
+
+## Method
+Chill glass, add ice, lime juice, triple sec and tequila
 ~~~
 {: .output}
 
@@ -369,25 +407,28 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index 77e5f25..573eea0 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,4 +3,7 @@
+ 1. Tequilia
+ 2. Triple Sec
+ 3. Lime Juice
++
++## Method
++Chill glass, add ice, lime juice, triple sec and tequila
 ~~~
 {: .output}
 
 So far, so good:
-we've added one line to the end of the file
+we've added some lines to the end of the file
 (shown with a `+` in the first column).
 Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add mars.txt
+$ git add margherita.md
 $ git diff
 ~~~
 {: .bash}
@@ -405,14 +446,17 @@ $ git diff --staged
 {: .bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+diff --git a/margherita.md b/margherita.md
+index 77e5f25..573eea0 100644
+--- a/margherita.md
++++ b/margherita.md
+@@ -3,4 +3,7 @@
+ 1. Tequilia
+ 2. Triple Sec
+ 3. Lime Juice
++
++## Method
++Chill glass, add ice, lime juice, triple sec and tequila
 ~~~
 {: .output}
 
@@ -422,13 +466,13 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git commit -m "Add a method"
 ~~~
 {: .bash}
 
 ~~~
-[master 005937f] Discuss concerns about Mars' climate for Mummy
- 1 file changed, 1 insertion(+)
+[master 941ecf6] Add a method
+ 1 file changed, 3 insertions(+)
 ~~~
 {: .output}
 
@@ -453,23 +497,23 @@ $ git log
 {: .bash}
 
 ~~~
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:14:07 2013 -0400
+commit 941ecf6d4a945bf88d86e4e3791dbd43b2558b6e
+Author: Chris Richardson <chris@bpi.cam.ac.uk>
+Date:   Tue Dec 5 10:03:18 2017 +0000
 
-    Discuss concerns about Mars' climate for Mummy
+    Add a method
 
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:07:21 2013 -0400
+commit 171e6b2d2f52fe45f8a353536d22c189125229dc
+Author: Chris Richardson <chris@bpi.cam.ac.uk>
+Date:   Tue Dec 5 10:00:09 2017 +0000
 
-    Add concerns about effects of Mars' moons on Wolfman
+    Add some ice
 
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+commit 373fb4773ff2ab36416485bb5e86270d46ad415b
+Author: Chris Richardson <chris@bpi.cam.ac.uk>
+Date:   Tue Dec 5 09:53:58 2017 +0000
 
-    Start notes on Mars as a base
+    Start recipe for margherita
 ~~~
 {: .output}
 
@@ -500,11 +544,11 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .bash}
 >
 > ~~~
-> commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-> Author: Vlad Dracula <vlad@tran.sylvan.ia>
-> Date:   Thu Aug 22 10:14:07 2013 -0400
+> commit 941ecf6d4a945bf88d86e4e3791dbd43b2558b6e
+> Author: Chris Richardson <chris@bpi.cam.ac.uk>
+> Date:   Tue Dec 5 10:03:18 2017 +0000
 >
->    Discuss concerns about Mars' climate for Mummy
+>    Add a method
 > ~~~
 > {: .output}
 >
@@ -516,9 +560,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Thoughts about the climate
-> * 34961b1 Concerns about Mars's moons on my furry friend
-> * f22b25e Starting to think about Mars
+> * 941ecf6 Add a method
+> * 171e6b2 Add some ice
+> * 373fb47 Start recipe for margherita
 > ~~~
 > {: .output}
 >
@@ -530,9 +574,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .bash}
 > ~~~
-> * 005937f Thoughts about the climate (HEAD, master)
-> * 34961b1 Concerns about Mars's moons on my furry friend
-> * f22b25e Starting to think about Mars
+> * 941ecf6 (HEAD -> master) Add a method
+> * 171e6b2 Add some ice
+> * 373fb47 Start recipe for margherita
 > ~~~
 > {: .output}
 {: .callout}
@@ -547,11 +591,11 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `mars.txt`?
+> last commit made to `margherita.md`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
-> 3. "Discuss effects of Mars' climate on the Mummy"
+> 2. "Added line 'Chill glass, add ice, lime juice, triple sec and tequila' to margherita.md"
+> 3. "Add method for making margherita"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough,
@@ -592,54 +636,68 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `mars.txt` noting your decision
-> to consider Venus as a base
-> 2. Create a new file `venus.txt` with your initial thoughts
-> about Venus as a base for you and your friends
+> 1. Add some text to `margherita.md` reorganising the method as a list.
+> 2. Create a new file `manhattan.md` with your initial thoughts
+> about a different cocktail (or something else of your choice).
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
 > > ## Solution
 > >
-> > First we make our changes to the `mars.txt` and `venus.txt` files:
+> > First we make our changes to the `margherita.md` and `manhattan.md` files:
 > > ~~~
-> > $ gedit mars.txt
-> > $ cat mars.txt
+> > $ nano margherita.md
+> > $ cat margherita.md
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Maybe I should start with a base on Venus.
+> ># Margherita
+> >## Ingredients
+> >1. Tequilia
+> >2. Triple Sec
+> >3. Lime Juice
+> >4. Ice
+> >
+> >## Method
+> >1. Chill glass
+> >2. Add ice
+> >3. Add lime juice
+> >4. Add triple sec
+> >5. Add tequila
+> >6. Mix
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ gedit venus.txt
-> > $ cat venus.txt
+> > $ nano manhattan.md
+> > $ cat manhattan.md
 > > ~~~
 > > {: .bash}
 > > ~~~
-> > Venus is a nice planet and I definitely should consider it as a base.
+> >  # Manhattan
+> > ## Ingredients
+> > Whiskey, vermouth, bitters
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add mars.txt venus.txt
+> > $ git add margherita.md manhattan.md
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add mars.txt
-> > $ git add venus.txt
+> > $ git add margherita.md
+> > $ git add manhattan.md
 > > ~~~
 > > {: .bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Wrote down my plans to start a base on Venus"
+> > $ git commit -m "Updated Margherita and started on Manhattan"
 > > ~~~
 > > {: .bash}
 > > ~~~
 > > [master cc127c2]
-> > Wrote down my plans to start a base on venus
+> > Updated Margherita and started on Manhattan
 > > 2 files changed, 2 insertions(+)
 > > ~~~
 > > {: .output}

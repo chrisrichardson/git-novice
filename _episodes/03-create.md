@@ -14,12 +14,12 @@ Once Git is configured, we can start using it.
 Let's create a directory for our work and then move into that directory:
 
 ~~~
-$ mkdir planets
-$ cd planets
+$ mkdir cocktails
+$ cd cocktails
 ~~~
 {: .bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)
+Then we tell Git to make `cocktails` a [repository]({{ page.root }}/reference/#repository)
 — a place where Git can store versions of our files:
 
 ~~~
@@ -36,7 +36,7 @@ $ ls
 {: .bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `planets` called `.git`:
+we can see that Git has created a hidden directory within `cocktails` called `.git`:
 
 ~~~
 $ ls -a
@@ -70,22 +70,22 @@ nothing to commit (create/copy files and use "git add" to track)
 
 > ## Places to Create Git Repositories
 >
-> Dracula starts a new project, `moons`, related to his `planets` project.
+> Dracula starts a new project, `whiskey`, related to his `cocktails` project.
 > Despite Wolfman's concerns, he enters the following sequence of commands to
 > create one Git repository inside another:
 >
 > ~~~
-> $ cd             # return to home directory
-> $ mkdir planets  # make a new directory planets
-> $ cd planets     # go into planets
-> $ git init       # make the planets directory a Git repository
-> $ mkdir moons    # make a sub-directory planets/moons
-> $ cd moons       # go into planets/moons
-> $ git init       # make the moons sub-directory a Git repository
+> $ cd               # return to home directory
+> $ mkdir cocktails  # make a new directory cocktails
+> $ cd cocktails     # go into cocktails
+> $ git init         # make the cocktails directory a Git repository
+> $ mkdir whiskey    # make a sub-directory cocktails/whiskey
+> $ cd whiskey       # go into cocktails/whiskey
+> $ git init         # make the whiskey sub-directory a Git repository
 > ~~~
 > {: .bash}
 >
-> Why is it a bad idea to do this? (Notice here that the `planets` project is now also tracking the entire `mars` repository.)
+> Why is it a bad idea to do this? (Notice here that the `cocktails` project is now also tracking the entire `whiskey` repository.)
 > How can Dracula undo his last `git init`?
 >
 > > ## Solution
@@ -111,33 +111,33 @@ nothing to commit (create/copy files and use "git add" to track)
 > > Note that we can track files in directories within a Git:
 > >
 > > ~~~
-> > $ touch moon phobos deimos titan    # create moon files
-> > $ cd ..                             # return to planets directory
-> > $ ls moons                          # list contents of the moons directory
-> > $ git add moons/*                   # add all contents of planets/moons
-> > $ git status                        # show moons files in staging area
-> > $ git commit -m "add moon files"    # commit planets/moons to planets Git repository
+> > $ touch glenlivet laphroaig    # create whiskey files
+> > $ cd ..                        # return to cocktails directory
+> > $ ls whiskey                   # list contents of the whiskey directory
+> > $ git add whiskey/*            # add all contents of cocktails/whiskey
+> > $ git status                   # show whiskey files in staging area
+> > $ git commit -m "add whiskey files"    # commit cocktails/whiskey to cocktails Git repository
 > > ~~~
 > > {: .bash}
 > >
-> > Similarly, we can ignore (as discussed later) entire directories, such as the `moons` directory:
+> > Similarly, we can ignore (as discussed later) entire directories, such as the `whiskey` directory:
 > >
 > > ~~~
-> > $ nano .gitignore # open the .gitignore file in the texteditor to add the moons directory
+> > $ nano .gitignore # open the .gitignore file in the texteditor to add the whiskey directory
 > > $ cat .gitignore # if you run cat afterwards, it should look like this:
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > moons
+> > whiskey
 > > ~~~
 > > {: .output}
 > >
 > > To recover from this little mistake, Dracula can just remove the `.git`
-> > folder in the moons subdirectory. To do so he can run the following command from inside the 'moons' directory:
+> > folder in the whiskey subdirectory. To do so he can run the following command from inside the 'whiskey' directory:
 > >
 > > ~~~
-> > $ rm -rf moons/.git
+> > $ rm -rf .git
 > > ~~~
 > > {: .bash}
 > >

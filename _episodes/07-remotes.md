@@ -25,26 +25,27 @@ services like [GitHub](http://github.com), [BitBucket](http://bitbucket.org) or
 [GitLab](http://gitlab.com/) to hold those master copies; we'll explore the pros and cons of this in the final section of this lesson.
 
 Let's start by sharing the changes we've made to our current project
-with the world. Create an account on [bitbucket.org](https://bitbucket.org). Bitbucket have an academic programme, which
-allows you to have unlimited private repositories (unlike some other
-websites). If you use an `.ac.uk` email address to sign up, you will
-automatically get this feature.
+with the world. Create an account on
+[bitbucket.org](https://bitbucket.org). Bitbucket have an academic
+programme, which allows you to have unlimited private repositories. If
+you use an `.ac.uk` email address to sign up, you will automatically
+get this feature.
 
 Log in to Bitbucket, then click on the menu drop-down "Repositories" and
-create a new repository called `planets`:
+create a new repository called `cocktails`:
 
 ![Creating a Repository](../fig/bitbucket-new-repo.png)
 
 This effectively does the following on Bitbucket's servers:
 
 ~~~
-$ mkdir planets
-$ cd planets
+$ mkdir cocktails
+$ cd cocktails
 $ git init
 ~~~
 {: .bash}
 
-Our local repository still contains our earlier work on `mars.txt`, but the
+Our local repository still contains our earlier work on `margherita.md`, but the
 remote repository on bitbucket doesn't contain any files yet.
 
 ![New Repository](../fig/git-freshly-made-bitbucket-repo.png)
@@ -64,7 +65,7 @@ authentication from SSH to HTTPS, as it is easier to work with for
 now. Use a pattern like this (replacing vlad with your bitbucket username).
 
 ~~~
-git remote add origin https://vlad@bitbucket.org/vlad/planets.git
+git remote add origin https://vlad@bitbucket.org/vlad/cocktails.git
 ~~~
 {: .bash}
 
@@ -90,8 +91,8 @@ $ git remote -v
 {: .bash}
 
 ~~~
-origin   https://bitbucket.org/vlad/planets.git (push)
-origin   https://bitbucket.org/vlad/planets.git (fetch)
+origin   https://bitbucket.org/vlad/cocktails.git (push)
+origin   https://bitbucket.org/vlad/cocktails.git (fetch)
 ~~~
 {: .output}
 
@@ -116,7 +117,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 821 bytes, done.
 Total 9 (delta 2), reused 0 (delta 0)
-To https://bitbucket.org/vlad/planets
+To https://bitbucket.org/vlad/cocktails
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ~~~
@@ -157,7 +158,7 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-From https://bitbucket.org/vlad/planets
+From https://bitbucket.org/vlad/cocktails
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
@@ -169,7 +170,7 @@ bitbucket, though, this command would download them to our local repository.
 
 ## bitbucket GUI
 
-Browse to your `planets` repository on bitbucket.
+Browse to your `cocktails` repository on bitbucket.
  * Try clicking on the 'Source' button on the left. You can use this to
    browse all the files in your repository. By using the dropdown menu
    with the git hash (e.g. d69e7a9) you can choose which version of the

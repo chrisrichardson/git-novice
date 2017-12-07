@@ -34,16 +34,16 @@ notifying them they have access.
 
 Next, the Collaborator needs to download a copy of the Owner's
 repository to their  machine. This is called "cloning a repo". To
-clone the Owner's repo into their `Desktop` folder, the Collaborator enters:
+clone the Owner's repo into their own folder, the Collaborator enters:
 
 ~~~
-$ git clone https://bitbucket.org/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://bitbucket.org/vlad/cocktails.git vlad-cocktails
 ~~~
 {: .bash}
 
 Replace 'vlad' with the Owner's username. Note that we have specified
-the folder name as `~/Desktop/vlad-planets` instead of accepting the
-default of `planets`. This can be useful to `git clone` repositories to
+the folder name as `~/Desktop/vlad-cocktails` instead of accepting the
+default of `cocktails`. This can be useful to `git clone` repositories to
 folders of your choice.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
@@ -52,26 +52,26 @@ As Collaborator, you can now make a change in your clone of the
 Owner's repository, in exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ gedit pluto.txt
-$ cat pluto.txt
+$ cd ~/Desktop/vlad-cocktails
+$ nano screwdriver.md
+$ cat screwdriver.md
 ~~~
 {: .bash}
 
 ~~~
-It is so a planet!
+# Screwdriver cocktail
 ~~~
 {: .output}
 
 ~~~
-$ git add pluto.txt
-$ git commit -m "Some notes about Pluto"
+$ git add screwdriver.md
+$ git commit -m "Header line for new cocktail"
 ~~~
 {: .bash}
 
 ~~~
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 screwdriver.md
 ~~~
 {: .output}
 
@@ -88,7 +88,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://bitbucket.org/vlad/planets.git
+To https://bitbucket.org/vlad/cocktails.git
    9272da5..29aba7c  master -> master
 ~~~
 {: .output}
@@ -113,13 +113,13 @@ remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0)
 Unpacking objects: 100% (3/3), done.
-From https://bitbucket.org/vlad/planets
+From https://bitbucket.org/vlad/cocktails
  * branch            master     -> FETCH_HEAD
 Updating 9272da5..29aba7c
 Fast-forward
- pluto.txt | 1 +
+ screwdriver.md | 1 +
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 screwdriver.md
 ~~~
 {: .output}
 
@@ -140,6 +140,16 @@ bitbucket) are back in sync.
 > It is better to make many commits with smaller changes rather than
 > of one commit with massive changes: small commits are easier to
 > read and review.
+{: .callout}
+
+> ## Let's all work together now
+>
+> I have an empty-ish repository at [https://bitbucket.org/chris_richardson/cocktails](https://bitbucket.org/chris_richardson/cocktails).
+> If you give me your userids, I will give you access.
+>
+> * Clone the repository (`git clone https://bitbucket.org/chris_richardson/cocktails ChrisR-cocktails`) into the folder `ChrisR-cocktails`.
+> * Add a new cocktail file (`nano cocktail_name.md`)
+> * With git, add the file, commit, and push to origin master.
 {: .callout}
 
 > ## Switch Roles and Repeat
@@ -183,4 +193,3 @@ bitbucket) are back in sync.
 > allows you to make a comment, which will be emailed to the contributor.
 >
 {: .challenge}
-

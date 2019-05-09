@@ -37,7 +37,7 @@ which means that any changes pushed to an online Git host server in a
 later lesson will include this information.
 If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 
-He also has to set his favorite text editor, following this table:
+You can also set your favorite text editor, following this table:
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|

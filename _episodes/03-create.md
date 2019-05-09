@@ -11,15 +11,17 @@ keypoints:
 ---
 
 Once Git is configured, we can start using it.
-Let's create a directory for our work and then move into that directory:
+Let's create a directory for our work and then move into that directory.
+For today, we'll be working on a Python program which can calculate "pi".
+Let's call the project "picalc".
 
 ~~~
-$ mkdir cocktails
-$ cd cocktails
+$ mkdir picalc
+$ cd picalc
 ~~~
 {: .bash}
 
-Then we tell Git to make `cocktails` a [repository]({{ page.root }}/reference/#repository)
+Then we tell Git to make `picalc` a [repository]({{ page.root }}/reference/#repository)
 — a place where Git can store versions of our files:
 
 ~~~
@@ -36,7 +38,7 @@ $ ls
 {: .bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `cocktails` called `.git`:
+we can see that Git has created a hidden directory within `picalc` called `.git`:
 
 ~~~
 $ ls -a
@@ -70,22 +72,22 @@ nothing to commit (create/copy files and use "git add" to track)
 
 > ## Places to Create Git Repositories
 >
-> Dracula starts a new project, `whiskey`, related to his `cocktails` project.
-> Despite Wolfman's concerns, he enters the following sequence of commands to
+> Dracula starts a new project, `sphere_calc`, related to his `picalc` project.
+> Despite his colleague's concerns, he enters the following sequence of commands to
 > create one Git repository inside another:
 >
 > ~~~
 > $ cd               # return to home directory
-> $ mkdir cocktails  # make a new directory cocktails
-> $ cd cocktails     # go into cocktails
-> $ git init         # make the cocktails directory a Git repository
-> $ mkdir whiskey    # make a sub-directory cocktails/whiskey
-> $ cd whiskey       # go into cocktails/whiskey
-> $ git init         # make the whiskey sub-directory a Git repository
+> $ mkdir picalc  # make a new directory picalc
+> $ cd picalc     # go into picalc
+> $ git init         # make the picalc directory a Git repository
+> $ mkdir sphere_calc    # make a sub-directory picalc/sphere_calc
+> $ cd sphere_calc       # go into picalc/sphere_calc
+> $ git init         # make the sphere_calc sub-directory a Git repository
 > ~~~
 > {: .bash}
 >
-> Why is it a bad idea to do this? (Notice here that the `cocktails` project is now also tracking the entire `whiskey` repository.)
+> Why is it a bad idea to do this? (Notice here that the `picalc` project is now also tracking the entire `sphere_calc` repository.)
 > How can Dracula undo his last `git init`?
 >
 > > ## Solution
@@ -111,30 +113,30 @@ nothing to commit (create/copy files and use "git add" to track)
 > > Note that we can track files in directories within a Git:
 > >
 > > ~~~
-> > $ touch glenlivet laphroaig    # create whiskey files
-> > $ cd ..                        # return to cocktails directory
-> > $ ls whiskey                   # list contents of the whiskey directory
-> > $ git add whiskey/*            # add all contents of cocktails/whiskey
-> > $ git status                   # show whiskey files in staging area
-> > $ git commit -m "add whiskey files"    # commit cocktails/whiskey to cocktails Git repository
+> > $ touch ball.py ovoid.py       # create some sphere_calc files
+> > $ cd ..                        # return to picalc directory
+> > $ ls sphere_calc               # list contents of the sphere_calc directory
+> > $ git add sphere_calc/*        # add all contents of picalc/sphere_calc
+> > $ git status                   # show sphere_calc files in staging area
+> > $ git commit -m "add sphere_calc files"    # commit picalc/sphere_calc to picalc Git repository
 > > ~~~
 > > {: .bash}
 > >
-> > Similarly, we can ignore (as discussed later) entire directories, such as the `whiskey` directory:
+> > Similarly, we can ignore (as discussed later) entire directories, such as the `sphere_calc` directory:
 > >
 > > ~~~
-> > $ nano .gitignore # open the .gitignore file in the texteditor to add the whiskey directory
+> > $ nano .gitignore # open the .gitignore file in the texteditor to add the sphere_calc directory
 > > $ cat .gitignore # if you run cat afterwards, it should look like this:
 > > ~~~
 > > {: .bash}
 > >
 > > ~~~
-> > whiskey
+> > sphere_calc
 > > ~~~
 > > {: .output}
 > >
 > > To recover from this little mistake, Dracula can just remove the `.git`
-> > folder in the whiskey subdirectory. To do so he can run the following command from inside the 'whiskey' directory:
+> > folder in the sphere_calc subdirectory. To do so he can run the following command from inside the 'sphere_calc' directory:
 > >
 > > ~~~
 > > $ rm -rf .git

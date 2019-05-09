@@ -13,20 +13,19 @@ keypoints:
 
 ## [Welcome](../Welcome.pdf)
 
-## Using the UIS DS Linux machines
+## Using the UIS MCS Linux machines
 
-You should have a laptop which you can use on "eduroam" or "UniOfCam"
-wireless networks. In order to have a uniform environment, we are all
-going to use the UIS "linux.ds.cam.ac.uk" service.
+You should have a machine which is booted into Linux. In order to have a
+uniform environment, we are all going to use the MCS Linux service.
 
 It uses the same password as Raven. If you have been in the University
-for a while and not used DS, you may need to [reset your
+for a while and not used MCS, you may need to [reset your
 password](https://password.csx.cam.ac.uk).
-Once you've logged in, you can open a terminal and start typing
-commands.
+Once you've logged in, you can open a terminal (Activities/Terminal)
+and start typing commands.
 
-### Using a laptop
-Use your own laptop to log into DS remotely using an SSH client
+### Using your own laptop
+You may also use your own laptop to log in remotely using an SSH client
 (e.g. [MobaXterm for Windows](https://mobaxterm.mobatek.net/)).
 MacOS has a native ssh client, so you can just open a terminal and type:
 ~~~
@@ -43,9 +42,8 @@ You still need a valid password, of course.
 Everything today will be done from the command line. You don't really
 need an in-depth knowledge of Unix to do this, but familiarity with
 the basics (`cd`, `ls`, `mkdir` etc.) is important. Additionally you need to be
-able to use an editor - I recommend using `nano` on the DS service
-(you can also use `vi` or `emacs`, and `gedit` if you have X11
-forwarding working).
+able to use an editor - I recommend using `gedit` on the MCS service
+(you can also use `vi` or `emacs` if you are using a remote login).
 There are some graphical tools for Git available for
 Windows and Mac, but we won't cover those today. Once you understand
 the principles of operation, you will find it easier to switch to a

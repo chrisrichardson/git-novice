@@ -150,6 +150,7 @@ bitbucket) are back in sync.
 > * Clone the repository (`git clone https://bitbucket.org/chris_richardson/cocktails ChrisR-cocktails`) into the folder `ChrisR-cocktails`.
 > * Add a new cocktail file (`nano cocktail_name.md`)
 > * With git, add the file, commit, and push to origin master.
+> * you may have to do `git pull` if it has changed whilst you were editing...
 {: .callout}
 
 > ## Switch Roles and Repeat

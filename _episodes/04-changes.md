@@ -17,47 +17,33 @@ keypoints:
 - "Always write a log message when committing changes."
 ---
 
-Let's start off by learning some Markdown. Markdown is a rich text format,
-which allows us to add a few features (such as bold, italic,
-underline, and weblinks) to normal text. This website is actually
-written in Markdown. You can find a [Markdown
-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-online.
-Basically, headers start with a `#` symbol:
+Let's start off by learning some simple Python. Python is a scripting
+language, which has become very popular. We'll start off by writing a
+very basic program.
 
-`# Header 1`
-# Header 1
-`### Header 3`
-### Header 3
-
-Emphasis is done with asterisks `**bold**` = **bold**, and lists are
-just numbered. See the cheatsheet.
-
-Let's create a file called `margherita.md` that contains some notes
-about making a margherita cocktail. (Markdown files usually have the
-`.md` suffix).
+Let's create a file called `loop.py` that contains a simple loop.
+(Python files usually have the `.py` suffix).
 (We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set
 globally earlier.)
 
 ~~~
-$ nano margherita.md
+$ nano loop.py
 ~~~
 {: .bash}
 
-Type some text into the `margherita.md` file, e.g.:
+Type the following into the `loop.py` file:
 
 ~~~
-# Margherita
-## Ingredients
-1. tequila
-2. triple sec
-3. lime juice
+for i in range(1, 100):
+    print(i)
 ~~~
 {: .output}
 
-`margherita.md` now contains a few lines, which we can see by running:
+Note that the second line begins with 4 spaces (not a tab).
+
+`loop.py` now contains two lines, which we can see by running:
 
 ~~~
 $ ls
@@ -65,23 +51,28 @@ $ ls
 {: .bash}
 
 ~~~
-margherita.md
+loop.py
 ~~~
 {: .output}
 
 ~~~
-$ cat margherita.md
+$ cat loop.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. tequila
-2. triple sec
-3. lime juice
+for i in range(1, 100):
+    print(i)
 ~~~
 {: .output}
+
+You can also run the program by typing
+~~~
+$ python loop.py
+~~~
+{: .bash}
+
+which should print out the numbers from 1 to 99.
 
 If we check the status of our project again,
 Git tells us that it's noticed the new file:
@@ -99,7 +90,7 @@ Initial commit
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	margherita.md
+	loop.py
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 {: .output}
@@ -109,7 +100,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add margherita.md
+$ git add loop.py
 ~~~
 {: .bash}
 
@@ -128,24 +119,24 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   margherita.md
+	new file:   loop.py
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `margherita.md`,
+Git now knows that it's supposed to keep track of `loop.py`,
 but it hasn't recorded these changes as being final yet.
 To get it to do that, we need to run one more command:
 
 ~~~
-$ git commit -m "Start recipe for margherita"
+$ git commit -m "Start python program"
 ~~~
 {: .bash}
 
 ~~~
-[master (root-commit) 373fb47] Start recipe for margherita
+[master (root-commit) 373fb47] Start python program
  1 file changed, 5 insertions(+)
- create mode 100644 margherita.md
+ create mode 100644 loop.py
 ~~~
 {: .output}
 
@@ -193,7 +184,7 @@ commit 373fb4773ff2ab36416485bb5e86270d46ad415b
 Author: Chris Richardson <chris@bpi.cam.ac.uk>
 Date:   Tue Dec 5 09:53:58 2017 +0000
 
-    Start recipe for margherita
+    Start python program
 ~~~
 {: .output}
 
@@ -208,7 +199,7 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `margherita.md`.
+> If we run `ls` at this point, we will still see just one file called `loop.py`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
@@ -220,18 +211,15 @@ Now suppose I add more information to the file.
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano margherita.md
-$ cat margherita.md
+$ nano loop.py
+$ cat loop.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
-4. Ice
+# Written by Chris
+for i in range(1, 100):
+    print(i)
 ~~~
 {: .output}
 
@@ -249,7 +237,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   margherita.md
+	modified:   loop.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -272,10 +260,10 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index eafc011..77e5f25 100644
---- a/margherita.md
-+++ b/margherita.md
+--- a/loop.py
++++ b/loop.py
 @@ -3,3 +3,4 @@
  1. Tequilia
  2. Triple Sec
@@ -314,7 +302,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   margherita.md
+	modified:   loop.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -325,7 +313,7 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add margherita.md
+$ git add loop.py
 $ git commit -m "Add some ice"
 ~~~
 {: .bash}
@@ -383,8 +371,8 @@ First,
 we'll add a few more lines to the file:
 
 ~~~
-$ nano margherita.md
-$ cat margherita.md
+$ nano loop.py
+$ cat loop.py
 ~~~
 {: .bash}
 
@@ -407,10 +395,10 @@ $ git diff
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index 77e5f25..573eea0 100644
---- a/margherita.md
-+++ b/margherita.md
+--- a/loop.py
++++ b/loop.py
 @@ -3,4 +3,7 @@
  1. Tequilia
  2. Triple Sec
@@ -428,7 +416,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add margherita.md
+$ git add loop.py
 $ git diff
 ~~~
 {: .bash}
@@ -446,10 +434,10 @@ $ git diff --staged
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index 77e5f25..573eea0 100644
---- a/margherita.md
-+++ b/margherita.md
+--- a/loop.py
++++ b/loop.py
 @@ -3,4 +3,7 @@
  1. Tequilia
  2. Triple Sec
@@ -591,10 +579,10 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `margherita.md`?
+> last commit made to `loop.py`?
 >
 > 1. "Changes"
-> 2. "Added line 'Chill glass, add ice, lime juice, triple sec and tequila' to margherita.md"
+> 2. "Added line 'Chill glass, add ice, lime juice, triple sec and tequila' to loop.py"
 > 3. "Add method for making margherita"
 >
 > > ## Solution
@@ -636,7 +624,7 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `margherita.md` reorganising the method as a list.
+> 1. Add some text to `loop.py` reorganising the method as a list.
 > 2. Create a new file `manhattan.md` with your initial thoughts
 > about a different cocktail (or something else of your choice).
 > 3. Add changes from both files to the staging area,
@@ -644,10 +632,10 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > First we make our changes to the `margherita.md` and `manhattan.md` files:
+> > First we make our changes to the `loop.py` and `manhattan.md` files:
 > > ~~~
-> > $ nano margherita.md
-> > $ cat margherita.md
+> > $ nano loop.py
+> > $ cat loop.py
 > > ~~~
 > > {: .bash}
 > > ~~~
@@ -681,12 +669,12 @@ repository (`git commit`):
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add margherita.md manhattan.md
+> > $ git add loop.py manhattan.md
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add margherita.md
+> > $ git add loop.py
 > > $ git add manhattan.md
 > > ~~~
 > > {: .bash}

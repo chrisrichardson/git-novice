@@ -68,6 +68,10 @@ across different computers facilitating collaboration among different people.
 
 [![Using git](../fig/git-xkcd.png)](https://xkcd.com/1597/)
 
-This course is about Git, but we won't be able to cover everything about it - this is a course for beginners, not experts.
+This course is about Git, but we won't be able to cover everything about it - this is also a course for beginners, not experts.
 
-Also, you will really only learn it when you "use it for real". We will do some practical work today, but it will take quite a while for it all to make sense. You might want to come back to these notes, or look at other online resources to help you in the future.
+You will probably really only learn to use Git fully when you "use it
+for real". We will do some practical work today, but it will take
+quite a while for it all to make sense. You might want to come back to
+these notes, or look at other online resources to help you in the
+future.

@@ -12,16 +12,16 @@ keypoints:
 
 Once Git is configured, we can start using it.
 Let's create a directory for our work and then move into that directory.
-For today, we'll be working on a Python program which can calculate "pi".
-Let's call the project "picalc".
+For today, we'll be working on a simple Python program.
+Let's call the project "myproject".
 
 ~~~
-$ mkdir picalc
-$ cd picalc
+$ mkdir myproject
+$ cd myproject
 ~~~
 {: .bash}
 
-Then we tell Git to make `picalc` a [repository]({{ page.root }}/reference/#repository)
+Then we tell Git to make `myproject` a [repository]({{ page.root }}/reference/#repository)
 — a place where Git can store versions of our files:
 
 ~~~
@@ -38,7 +38,7 @@ $ ls
 {: .bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `picalc` called `.git`:
+we can see that Git has created a hidden directory within `myproject` called `.git`:
 
 ~~~
 $ ls -a
@@ -72,22 +72,22 @@ nothing to commit (create/copy files and use "git add" to track)
 
 > ## Places to Create Git Repositories
 >
-> Dracula starts a new project, `sphere_calc`, related to his `picalc` project.
+> Dracula starts a new project, `sphere_calc`, related to his `myproject` project.
 > Despite his colleague's concerns, he enters the following sequence of commands to
 > create one Git repository inside another:
 >
 > ~~~
 > $ cd               # return to home directory
-> $ mkdir picalc  # make a new directory picalc
-> $ cd picalc     # go into picalc
-> $ git init         # make the picalc directory a Git repository
-> $ mkdir sphere_calc    # make a sub-directory picalc/sphere_calc
-> $ cd sphere_calc       # go into picalc/sphere_calc
+> $ mkdir myproject  # make a new directory myproject
+> $ cd myproject     # go into myproject
+> $ git init         # make the myproject directory a Git repository
+> $ mkdir sphere_calc    # make a sub-directory myproject/sphere_calc
+> $ cd sphere_calc       # go into myproject/sphere_calc
 > $ git init         # make the sphere_calc sub-directory a Git repository
 > ~~~
 > {: .bash}
 >
-> Why is it a bad idea to do this? (Notice here that the `picalc` project is now also tracking the entire `sphere_calc` repository.)
+> Why is it a bad idea to do this? (Notice here that the `myproject` project is now also tracking the entire `sphere_calc` repository.)
 > How can Dracula undo his last `git init`?
 >
 > > ## Solution
@@ -114,11 +114,11 @@ nothing to commit (create/copy files and use "git add" to track)
 > >
 > > ~~~
 > > $ touch ball.py ovoid.py       # create some sphere_calc files
-> > $ cd ..                        # return to picalc directory
+> > $ cd ..                        # return to myproject directory
 > > $ ls sphere_calc               # list contents of the sphere_calc directory
-> > $ git add sphere_calc/*        # add all contents of picalc/sphere_calc
+> > $ git add sphere_calc/*        # add all contents of myproject/sphere_calc
 > > $ git status                   # show sphere_calc files in staging area
-> > $ git commit -m "add sphere_calc files"    # commit picalc/sphere_calc to picalc Git repository
+> > $ git commit -m "add sphere_calc files"    # commit myproject/sphere_calc to myproject Git repository
 > > ~~~
 > > {: .bash}
 > >

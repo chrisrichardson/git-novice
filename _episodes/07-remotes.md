@@ -24,48 +24,76 @@ on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](http://github.com), [BitBucket](http://bitbucket.org) or
 [GitLab](http://gitlab.com/) to hold those master copies; we'll explore the pros and cons of this in the final section of this lesson.
 
-Let's start by sharing the changes we've made to our current project
-with the world. Create an account on
-[bitbucket.org](https://bitbucket.org). Bitbucket have an academic
-programme, which allows you to have unlimited private repositories. If
-you use an `.ac.uk` email address to sign up, you will automatically
-get this feature.
+Let's start by creating an account at GitHub. The University of Cambridge recently signed up to "GitHub Education", which
+gives some additional benefits for staff and students, but we will not be using any of those features.
+Go to [GitHub](https://github.com) and create a login, if you don't have one already. You will need to confirm your email address.
+Once you have an account, you should be able to create a new repository online. Click on the "+" sign in the top right corner.
 
-Log in to Bitbucket, then click on the menu drop-down "Repositories" and
-create a new repository called `cocktails`:
+![Creating a Repository](../fig/github-new-repo.jpg)
 
-![Creating a Repository](../fig/bitbucket-new-repo.png)
+This time, I'm calling the repository "picalc", as it will include
+some code to calculate the value of "pi". Let's make it a "Private"
+repository for now. The other options can stay as default.
 
-This effectively does the following on Bitbucket's servers:
+![Creating a Repository 2](../fig/git-new-repo-2.jpg)
+
+This effectively does the following on GitHub's servers:
 
 ~~~
-$ mkdir cocktails
-$ cd cocktails
+$ mkdir picalc
+$ cd picalc
 $ git init
 ~~~
 {: .bash}
 
-Our local repository still contains our earlier work on `margherita.md`, but the
-remote repository on bitbucket doesn't contain any files yet.
+Helpfully, GitHub tells you what to do to start a new repository. The first few lines cover what we have already done.
+You will notice some new commands `git remote` and `git push` which we will cover in this section.
 
-![New Repository](../fig/git-freshly-made-bitbucket-repo.png)
+![Creating a Repository 3](../fig/git-new-repo-3.jpg)
 
-The next step is to connect the two repositories.  We do this by making the
-bitbucket repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
-
-As soon as the repository is created, bitbucket displays a page with a
-URL and some information on how to configure your local repository.
-
-![New Repository](../fig/bitbucket-new-repo-empty.png)
-
-We have an existing repository, so click on the "I have an existing
-project" link. It will give you some instructions for linking up your
-repository to the website. However, we will change the
-authentication from SSH to HTTPS, as it is easier to work with for
-now. Use a pattern like this (replacing vlad with your bitbucket username).
+Let's follow some of their suggestions and create some files to put in a new repository. Go back to your home directory and make a new folder:
 
 ~~~
-git remote add origin https://vlad@bitbucket.org/vlad/cocktails.git
+cd ~
+mkdir picalc
+cd picalc
+git init
+nano pi.py
+~~~
+{: .bash}
+
+In the file, let's put a simple code to calculate an approximate value for "pi" - NB this is not a serious method, it is very slow!
+
+~~~
+a = 2.0
+for n in range(1, 10000):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+~~~
+
+Try it by running `python pi.py`. It should print out `3.14151411083`.
+If you want, you can also create a file called "README" with some text in it e.g. "A simple method to calculate pi."
+
+~~~
+git add pi.py README
+git commit -m "Code to calculate pi and a README"
+~~~
+
+Our local repository contains `pi.py` and `README`, but the
+remote repository on GitHub doesn't contain any files yet.
+
+![New Repository](../fig/git-freshly-made-repo.png)
+
+The next step is to connect the two repositories.  We do this by making the
+GitHub repository a [remote]({{ page.root }}/reference/#remote) for the local repository.
+
+We will change the authentication from SSH to HTTPS, as it is easier to work with for
+now. Use a pattern like this (replacing vlad with your github
+username) - this should be the same command which GitHub suggests when
+creating the repository.
+
+~~~
+git remote add origin https://vlad@github.com/vlad/picalc.git
 ~~~
 {: .bash}
 
@@ -74,13 +102,18 @@ difference should be your username instead of `vlad`.
 
 > ## HTTPS vs. SSH
 >
-> We use HTTPS here because it does not require additional configuration.  After
-> the workshop you may want to set up SSH access, which is a bit more secure, by
-> following one of the great tutorials from
+> We use HTTPS here because it does not require additional configuration.
+> You may want to set up SSH access, which is a bit more secure, and
+> does not require a password every time.
+> Follow one of the great tutorials from
 > [github](https://help.github.com/articles/generating-ssh-keys),
 > [Atlassian/BitBucket](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git)
 > and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
 > (this one has a screencast).
+>
+> If you are feeling confident, it can be done with the following command: `ssh-keygen`.
+> You then need to upload the file `~/.ssh/id_rsa.pub` into your "SSH and GPG settings"
+> on GitHub.
 {: .callout}
 
 We can check that the command has worked by running `git remote -v`:
@@ -91,8 +124,8 @@ $ git remote -v
 {: .bash}
 
 ~~~
-origin   https://bitbucket.org/vlad/cocktails.git (push)
-origin   https://bitbucket.org/vlad/cocktails.git (fetch)
+origin   https://vlad@github.com/vlad/picalc.git (push)
+origin   https://vlad@github.com/vlad/picalc.git (fetch)
 ~~~
 {: .output}
 
@@ -100,7 +133,7 @@ The name `origin` is a local nickname for your remote repository: we could use
 something else if we wanted to, but `origin` is the default.
 
 Once the nickname `origin` is set up, this command will push the changes from
-our local repository to the repository on bitbucket:
+our local repository to the repository on GitHub:
 
 ~~~
 $ git push -u origin master
@@ -117,7 +150,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 821 bytes, done.
 Total 9 (delta 2), reused 0 (delta 0)
-To https://bitbucket.org/vlad/cocktails
+To https://github.com/vlad/picalc
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ~~~
@@ -158,7 +191,7 @@ $ git pull origin master
 {: .bash}
 
 ~~~
-From https://bitbucket.org/vlad/cocktails
+From https://github.com/vlad/picalc
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
@@ -166,12 +199,13 @@ Already up-to-date.
 
 Pulling has no effect in this case because the two repositories are already
 synchronized.  If someone else had pushed some changes to the repository on
-bitbucket, though, this command would download them to our local repository.
+GitHub, though, this command would download them to our local repository.
 
-## bitbucket GUI
+## GitHub GUI
 
-Browse to your `cocktails` repository on bitbucket.
- * Try clicking on the 'Source' button on the left. You can use this to
+Browse to your `picalc` repository on GitHub.
+
+* Try clicking on the 'Source' button on the left. You can use this to
    browse all the files in your repository. By using the dropdown menu
    with the git hash (e.g. d69e7a9) you can choose which version of the
    file to view.
@@ -193,7 +227,7 @@ Browse to your `cocktails` repository on bitbucket.
 > First start by adding a remote with an invalid URL:
 >
 > ~~~
-> git remote add broken https://bitbucket.org/this/url/is/invalid
+> git remote add broken https://github.org/this/url/is/invalid
 > ~~~
 > {: .bash}
 >
@@ -208,10 +242,10 @@ Can you figure out how to fix the URL (tip: use `git remote
 > done with this exercise.
 {: .challenge}
 
-> ## bitbucket README file
+> ## GitHub README file
 >
 > In this section we learned about creating a remote repository on
-> bitbucket. The 'Overview' tab suggests you create a README.
+> GitHub. The 'Overview' tab suggests you create a README.
 > Try doing that by clicking on the "Create a README" button. What
 > effect will this have on your repository?
 {: .challenge}

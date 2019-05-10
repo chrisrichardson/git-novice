@@ -628,6 +628,7 @@ repository (`git commit`):
 > > ## Solution
 > >
 > > First we make our changes to the `loop.py` and `example.py` files:
+> >
 > > ~~~
 > > $ nano loop.py
 > > $ cat loop.py
@@ -661,6 +662,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
+> >
 > > ~~~
 > > $ git add loop.py
 > > $ git add example.py

@@ -20,40 +20,44 @@ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can also refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `margherita.md`, so it's easy to track our
+We've been adding one line at a time to `loop.py`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `margherita.md`.
+let's make a change to `loop.py`.
 
 ~~~
-$ nano margherita.md
-$ cat margherita.md
+$ nano loop.py
+$ cat loop.py
 ~~~
 {: .bash}
 
 ~~~
-
-Drink slowly
+# Written by Chris
+# December 2017
+a = 0.0
+for i in range(1, 100):
+    a = a + i
+        print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
 Now, let's see what we get.
 
 ~~~
-$ git diff HEAD margherita.md
+$ git diff HEAD loop.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index e47cfe5..1b56c7c 100644
---- a/margherita.md
-+++ b/margherita.md
-@@ -12,3 +12,5 @@
-4. Add triple sec
-5. Add tequila
-6. Mix
-+
-+Drink slowly
+--- a/loop.py
++++ b/loop.py
+@@ -3,4 +3,4 @@
+ a = 0.0
+ for i in range(1, 100):
+     a = a + i
+-    print(i, a)
++    print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
@@ -62,7 +66,7 @@ real advantage is that you can also refer to previous commits.  We do
 that by adding `~1` to refer to the commit one before `HEAD`.
 
 ~~~
-$ git diff HEAD~1 margherita.md
+$ git diff HEAD~1 loop.py
 ~~~
 {: .bash}
 
@@ -71,58 +75,44 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to old
 commits:
 
 ~~~
-$ git diff HEAD~1 margherita.md
+$ git diff HEAD~1 loop.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index 573eea0..1b56c7c 100644
---- a/margherita.md
-+++ b/margherita.md
-@@ -6,4 +6,11 @@
-4. Ice
-
-## Method
--Chill glass, add ice, lime juice, triple sec and tequila
-+1. Chill glass
-+2. Add ice
-+3. Add lime juice
-+4. Add triple sec
-+5. Add tequila
-+6. Mix
-+
-+Drink slowly
+--- a/loop.py
++++ b/loop.py
+@@ -1,5 +1,6 @@
+ # Written by Chris
++# December 2017
+ a = 0.0
+ for i in range(1, 100):
+     a = a + i
+-    print(i, a)
++    print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
 ~~~
-$ git diff HEAD~2 margherita.md
+$ git diff HEAD~2 loop.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index 77e5f25..1b56c7c 100644
---- a/margherita.md
-+++ b/margherita.md
-@@ -3,4 +3,14 @@
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
--4. Ice
-+4. Ice
-+
-+## Method
-+1. Chill glass
-+2. Add ice
-+3. Add lime juice
-+4. Add triple sec
-+5. Add tequila
-+6. Mix
-+
-+Drink slowly
-
+--- a/loop.py
++++ b/loop.py
+@@ -1,3 +1,6 @@
+# Written by Chris
++# December 2017
++a = 0.0
+ for i in range(1, 100):
+-    print(i)
++    a = a + i
++    print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
@@ -146,30 +136,23 @@ Our first commit was given the ID
 so let's try this:
 
 ~~~
-$ git diff 373fb4773ff2ab36416485bb5e86270d46ad415b margherita.md
+$ git diff 373fb4773ff2ab36416485bb5e86270d46ad415b loop.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index eafc011..1b56c7c 100644
---- a/margherita.md
-+++ b/margherita.md
-@@ -3,3 +3,14 @@
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
-+4. Ice
-+
-+## Method
-+1. Chill glass
-+2. Add ice
-+3. Add lime juice
-+4. Add triple sec
-+5. Add tequila
-+6. Mix
-+
-+Drink slowly
+--- a/loop.py
++++ b/loop.py
+@@ -1,2 +1,6 @@
++# Written by Chris
++# December 2017
++a = 0.0
+for i in range(1, 100):
+-    print(i)
++    a = a + i
++    print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
@@ -178,30 +161,23 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters:
 
 ~~~
-$ git diff 373fb4 margherita.md
+$ git diff 373fb4 loop.py
 ~~~
 {: .bash}
 
 ~~~
-diff --git a/margherita.md b/margherita.md
+diff --git a/loop.py b/loop.py
 index eafc011..1b56c7c 100644
---- a/margherita.md
-+++ b/margherita.md
-@@ -3,3 +3,14 @@
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
-+4. Ice
-+
-+## Method
-+1. Chill glass
-+2. Add ice
-+3. Add lime juice
-+4. Add triple sec
-+5. Add tequila
-+6. Mix
-+
-+Drink slowly
+--- a/loop.py
++++ b/loop.py
+@@ -1,2 +1,6 @@
++# Written by Chris
++# December 2017
++a = 0.0
+for i in range(1, 100):
+-    print(i)
++    a = a + i
++    print('i=', i, 'a=', a)
 ~~~
 {: .output}
 
@@ -210,13 +186,19 @@ How can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:
 
 ~~~
-$ nano margherita.md
-$ cat margherita.md
+$ nano loop.py
+$ cat loop.py
 ~~~
 {: .bash}
 
 ~~~
-Add orange juice
+# Written by Chris
+# December 2017
+a = 0.0
+for i in range(1, 100):
+    a = a + i
+    print('i=', i, 'a=', a)
+    a = 0
 ~~~
 {: .output}
 
@@ -234,7 +216,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   margherita.md
+	modified:   loop.py
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -244,28 +226,18 @@ We can put things back the way they were
 by using `git checkout`:
 
 ~~~
-$ git checkout HEAD margherita.md
-$ cat margherita.md
+$ git checkout HEAD loop.py
+$ cat loop.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
-4. Ice
-
-## Method
-1. Chill glass
-2. Add ice
-3. Add lime juice
-4. Add triple sec
-5. Add tequila
-6. Mix
-
-Drink slowly
+# Written by Chris
+# December 2017
+a = 0.0
+for i in range(1, 100):
+    a = a + i
+    print(i, a)
 ~~~
 {: .output}
 
@@ -278,7 +250,7 @@ If we want to go back even further,
 we can use a commit identifier instead:
 
 ~~~
-$ git checkout f22b25e margherita.md
+$ git checkout f22b25e loop.py
 ~~~
 {: .bash}
 
@@ -287,12 +259,12 @@ $ git checkout f22b25e margherita.md
 > Above we used
 >
 > ~~~
-> $ git checkout f22b25e margherita.md
+> $ git checkout f22b25e loop.py
 > ~~~
 > {: .bash}
 >
-> to revert margherita.md to its state after the commit f22b25e.
-> If you forget `margherita.md` in that command, Git will tell you that "You are in
+> to revert loop.py to its state after the commit f22b25e.
+> If you forget `loop.py` in that command, Git will tell you that "You are in
 > 'detached HEAD' state." In this state, you shouldn't make any changes.
 > You can fix this by reattaching your head using ``git checkout master``
 {: .callout}
@@ -385,55 +357,55 @@ moving backward and forward in time becomes much easier.
 
 > ## Understanding Workflow and History
 >
-> What is the output of cat manhattan.md at the end of this set of commands?
+> What is the output of cat example.py at the end of this set of commands?
 >
 > ~~~
-> $ cd cocktails
-> $ nano manhattan.md #input the following text: Manhattan cocktail
-> $ git add manhattan.md
-> $ nano manhattan.md #add the following text: Whiskey, vermouth, bitters
-> $ git commit -m "Add recipe for manhattan"
-> $ git checkout HEAD manhattan.md
-> $ cat manhattan.md #this will print the contents of manhattan.md to the screen
+> $ cd myproject
+> $ nano example.py #input the following text: "a = 1.0"
+> $ git add example.py
+> $ nano example.py #add the following text: "print(a*2)"
+> $ git commit -m "Add simple code"
+> $ git checkout HEAD example.py
+> $ cat example.py #this will print the contents of example.py to the screen
 > ~~~
 > {: .bash}
 >
 > 1.
 >
 > ~~~
-> Manhattan cocktail
+> a = 1.0
 > ~~~
 > {: .output}
 >
 > 2.
 >
 > ~~~
-> Whiskey, vermouth, bitters
+> print(a*2)
 > ~~~
 > {: .output}
 >
 > 3.
 >
 > ~~~
-> Manhattan cocktail
-> Whiskey, vermouth, bitters
+> a = 1.0
+> print(a*2)
 > ~~~
 > {: .output}
 >
 > 4.
 >
 > ~~~
-> Error because you have changed manhattan.md without committing the changes
+> Error because you have changed example.py without committing the changes
 > ~~~
 > {: .output}
 {: .challenge}
 
 > ## Checking Understanding of `git diff`
 >
-> Consider this command: `git diff HEAD~3 margherita.md`. What do you predict this command
+> Consider this command: `git diff HEAD~3 loop.py`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
 >
-> Try another command, `git diff [ID] margherita.md`, where [ID] is replaced with
+> Try another command, `git diff [ID] loop.py`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
 > and what does happen?
 {: .challenge}
@@ -442,7 +414,7 @@ moving backward and forward in time becomes much easier.
 >
 > `git checkout` can be used to restore a previous commit when unstaged changes have
 > been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `margherita.md`, add that change, and use `git checkout` to see if
+> Make a change to `loop.py`, `git add` that change, and use `git checkout` to see if
 > you can remove your change.
 {: .challenge}
 
@@ -451,16 +423,16 @@ moving backward and forward in time becomes much easier.
 > Exploring history is an important part of git, often it is a challenge to find
 > the right commit ID, especially if the commit is from several months ago.
 >
-> Imagine the `cocktails` project has more than 50 files.
-> You would like to find a commit with specific text in `margherita.md` is modified.
+> Imagine the `myproject` project has more than 50 files.
+> You would like to find a commit with specific text in `loop.py` is modified.
 > When you type `git log`, a very long list appeared,
 > How can you narrow down the search?
 >
 > Recorded that the `git diff` command allow us to explore one specific file,
-> e.g. `git diff margherita.md`. We can apply the similar idea here.
+> e.g. `git diff loop.py`. We can apply the similar idea here.
 >
 > ~~~
-> $ git log margherita.md
+> $ git log loop.py
 > ~~~
 > {: .bash}
 >
@@ -471,7 +443,7 @@ moving backward and forward in time becomes much easier.
 > Is that possible to combine both? Let's try the following:
 >
 > ~~~
-> $ git log --patch margherita.md
+> $ git log --patch loop.py
 > ~~~
 > {: .bash}
 >

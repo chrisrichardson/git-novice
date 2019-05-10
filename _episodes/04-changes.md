@@ -67,6 +67,7 @@ for i in range(1, 100):
 {: .output}
 
 You can also run the program by typing
+
 ~~~
 $ python loop.py
 ~~~
@@ -264,11 +265,10 @@ diff --git a/loop.py b/loop.py
 index eafc011..77e5f25 100644
 --- a/loop.py
 +++ b/loop.py
-@@ -3,3 +3,4 @@
- 1. Tequilia
- 2. Triple Sec
- 3. Lime Juice
-+4. Ice
+@@ -1,2 +1,3 @@
++# Written by Chris
+ for i in range(1, 100):
+      print(i)
 ~~~
 {: .output}
 
@@ -291,8 +291,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add some ice"
-$ git status
+$ git commit -m "Add a comment"
 ~~~
 {: .bash}
 
@@ -314,12 +313,12 @@ Let's fix that:
 
 ~~~
 $ git add loop.py
-$ git commit -m "Add some ice"
+$ git commit -m "Add a comment"
 ~~~
 {: .bash}
 
 ~~~
-[master 34961b1] Add some ice
+[master 34961b1] Add a comment
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -377,15 +376,11 @@ $ cat loop.py
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequilia
-2. Triple Sec
-3. Lime Juice
-4. Ice
-
-## Method
-Chill glass, add ice, lime juice, triple sec and tequila
+# Written by Chris
+a = 0.0
+for i in range(1, 100):
+    a = a + i
+    print(i, a)
 ~~~
 {: .output}
 
@@ -399,18 +394,18 @@ diff --git a/loop.py b/loop.py
 index 77e5f25..573eea0 100644
 --- a/loop.py
 +++ b/loop.py
-@@ -3,4 +3,7 @@
- 1. Tequilia
- 2. Triple Sec
- 3. Lime Juice
-+
-+## Method
-+Chill glass, add ice, lime juice, triple sec and tequila
+@@ -1,3 +1,5 @@
+ # Written by Chris
++a = 0.0
+ for i in range(1, 100):
+-    print(i)
++    a = a + i
++    print(i, a)
 ~~~
 {: .output}
 
 So far, so good:
-we've added some lines to the end of the file
+we've added some lines to the file
 (shown with a `+` in the first column).
 Now let's put that change in the staging area
 and see what `git diff` reports:
@@ -438,13 +433,13 @@ diff --git a/loop.py b/loop.py
 index 77e5f25..573eea0 100644
 --- a/loop.py
 +++ b/loop.py
-@@ -3,4 +3,7 @@
- 1. Tequilia
- 2. Triple Sec
- 3. Lime Juice
-+
-+## Method
-+Chill glass, add ice, lime juice, triple sec and tequila
+@@ -1,3 +1,5 @@
+ # Written by Chris
++a = 0.0
+ for i in range(1, 100):
+-    print(i)
++    a = a + i
++    print(i, a)
 ~~~
 {: .output}
 
@@ -454,13 +449,13 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Add a method"
+$ git commit -m "Add up numbers in 'a'"
 ~~~
 {: .bash}
 
 ~~~
-[master 941ecf6] Add a method
- 1 file changed, 3 insertions(+)
+[master 941ecf6] Add up numbers in 'a'
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 ~~~
 {: .output}
 
@@ -489,19 +484,20 @@ commit 941ecf6d4a945bf88d86e4e3791dbd43b2558b6e
 Author: Chris Richardson <chris@bpi.cam.ac.uk>
 Date:   Tue Dec 5 10:03:18 2017 +0000
 
-    Add a method
+    Add up numbers in 'a'
 
 commit 171e6b2d2f52fe45f8a353536d22c189125229dc
 Author: Chris Richardson <chris@bpi.cam.ac.uk>
 Date:   Tue Dec 5 10:00:09 2017 +0000
 
-    Add some ice
+    Add a comment
 
 commit 373fb4773ff2ab36416485bb5e86270d46ad415b
 Author: Chris Richardson <chris@bpi.cam.ac.uk>
 Date:   Tue Dec 5 09:53:58 2017 +0000
 
-    Start recipe for margherita
+    Start python program
+
 ~~~
 {: .output}
 
@@ -536,7 +532,7 @@ Date:   Tue Dec 5 09:53:58 2017 +0000
 > Author: Chris Richardson <chris@bpi.cam.ac.uk>
 > Date:   Tue Dec 5 10:03:18 2017 +0000
 >
->    Add a method
+>    Add up numbers in 'a'
 > ~~~
 > {: .output}
 >
@@ -548,9 +544,9 @@ Date:   Tue Dec 5 09:53:58 2017 +0000
 > ~~~
 > {: .bash}
 > ~~~
-> * 941ecf6 Add a method
-> * 171e6b2 Add some ice
-> * 373fb47 Start recipe for margherita
+> * 941ecf6 Add up numbers in 'a'
+> * 171e6b2 Add a comment
+> * 373fb47 Start python program
 > ~~~
 > {: .output}
 >
@@ -562,9 +558,9 @@ Date:   Tue Dec 5 09:53:58 2017 +0000
 > ~~~
 > {: .bash}
 > ~~~
-> * 941ecf6 (HEAD -> master) Add a method
-> * 171e6b2 Add some ice
-> * 373fb47 Start recipe for margherita
+> * 941ecf6 (HEAD -> master) Add up numbers in 'a'
+> * 171e6b2 Add a comment
+> * 373fb47 Start python program
 > ~~~
 > {: .output}
 {: .callout}
@@ -582,8 +578,8 @@ repository (`git commit`):
 > last commit made to `loop.py`?
 >
 > 1. "Changes"
-> 2. "Added line 'Chill glass, add ice, lime juice, triple sec and tequila' to loop.py"
-> 3. "Add method for making margherita"
+> 2. "Added line 'a = a + i' to loop.py"
+> 3. "Add up numbers in 'a'"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough,
@@ -624,69 +620,61 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `loop.py` reorganising the method as a list.
-> 2. Create a new file `manhattan.md` with your initial thoughts
-> about a different cocktail (or something else of your choice).
+> 1. Add some text to `loop.py` (e.g. another comment line).
+> 2. Create a new file `example.py` with some different content of your choice.
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
 > > ## Solution
 > >
-> > First we make our changes to the `loop.py` and `manhattan.md` files:
+> > First we make our changes to the `loop.py` and `example.py` files:
 > > ~~~
 > > $ nano loop.py
 > > $ cat loop.py
 > > ~~~
 > > {: .bash}
 > > ~~~
-> ># Margherita
-> >## Ingredients
-> >1. Tequilia
-> >2. Triple Sec
-> >3. Lime Juice
-> >4. Ice
-> >
-> >## Method
-> >1. Chill glass
-> >2. Add ice
-> >3. Add lime juice
-> >4. Add triple sec
-> >5. Add tequila
-> >6. Mix
+> > # Written by Chris
+> > # December 2017
+> > a = 0.0
+> > for i in range(1, 100):
+> >     a = a + i
+> >     print(i, a)
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano manhattan.md
-> > $ cat manhattan.md
+> > $ nano example.py
+> > $ cat example.py
 > > ~~~
 > > {: .bash}
 > > ~~~
-> >  # Manhattan
-> > ## Ingredients
-> > Whiskey, vermouth, bitters
+> > # Written by Chris
+> > a = 2.0
+> > if (a > 1.0):
+> >     print ("a is greater than 1")
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add loop.py manhattan.md
+> > $ git add loop.py example.py
 > > ~~~
 > > {: .bash}
 > > Or with multiple commands:
 > > ~~~
 > > $ git add loop.py
-> > $ git add manhattan.md
+> > $ git add example.py
 > > ~~~
 > > {: .bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Updated Margherita and started on Manhattan"
+> > $ git commit -m "Updated loop.py and started new example code"
 > > ~~~
 > > {: .bash}
 > > ~~~
 > > [master cc127c2]
-> > Updated Margherita and started on Manhattan
-> > 2 files changed, 2 insertions(+)
+> > Updated loop.py and started new example code
+> > 2 files changed, 5 insertions(+)
 > > ~~~
 > > {: .output}
 > > ~~~

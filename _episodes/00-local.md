@@ -28,10 +28,12 @@ and start typing commands.
 You may also use your own laptop to log in remotely using an SSH client
 (e.g. [MobaXterm for Windows](https://mobaxterm.mobatek.net/)).
 MacOS has a native ssh client, so you can just open a terminal and type:
+
 ~~~
 ssh crsid@linux.ds.cam.ac.uk
 ~~~
 {: .bash}
+
 You still need a valid password, of course.
 
 > If you have a problem with accounts or password, please ask.

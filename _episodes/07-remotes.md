@@ -257,10 +257,12 @@ commit. Spend a bit of time exploring the web interface.
 > Do you get an error when adding the remote? Can you think of a
 > command that would make it obvious that your remote URL was not
 > valid?
+>
 > ~~~
 > git push broken master
 > ~~~
-Can you figure out how to fix the URL (tip: use `git remote
+>
+> Can you figure out how to fix the URL (tip: use `git remote
 > -h`)? Don't forget to clean up and remove this remote once you are
 > done with this exercise.
 {: .challenge}

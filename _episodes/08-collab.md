@@ -80,7 +80,7 @@ $ git commit -m "Add a comment line"
 ~~~
 {: .output}
 
-Then push the change to the *Owner's repository* on bitbucket:
+Then push the change to the *Owner's repository* on GitHub:
 
 ~~~
 $ git push
@@ -106,7 +106,7 @@ Take a look to the Owner's repository on its GitHub website now (maybe you need
 to refresh your browser.) You should be able to see the new commit made by the
 Collaborator.
 
-To download the Collaborator's changes from bitbucket, the Owner now enters:
+To download the Collaborator's changes from GitHub, the Owner now enters:
 
 ~~~
 $ git pull
@@ -128,7 +128,7 @@ Fast-forward
 {: .output}
 
 Now the three repositories (Owner's local, Collaborator's local, and Owner's on
-bitbucket) are back in sync.
+GitHub) are back in sync.
 
 > ## A Basic Collaborative Workflow
 >
@@ -139,7 +139,7 @@ bitbucket) are back in sync.
 > * update your local repo with `git pull`,
 > * make your changes and stage them with `git add`,
 > * commit your changes with `git commit -m`, and
-> * upload the changes to bitbucket with `git push`
+> * upload the changes to GitHub with `git push`
 >
 > It is better to make many commits with smaller changes rather than
 > of one commit with massive changes: small commits are easier to

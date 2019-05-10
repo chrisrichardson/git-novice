@@ -22,45 +22,47 @@ by giving us tools to [resolve]({{ page.root }}/reference/#resolve)
 overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`margherita.md` currently looks like this in both partners' copies of our `cocktails`
+`pi.py` currently looks like this in both partners' copies of our `picalc`
 repository:
 
 ~~~
-$ cat margherita.md
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
+# Add a comment line by collaborator
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
 ~~~
 {: .output}
 
 Let's add a line to one partner's copy only:
 
 ~~~
-$ nano margherita.md
-$ cat margherita.md
+$ nano pi.py
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
-4. Ice
+# Add a comment line by collaborator
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+print(" - which should be close to pi")
 ~~~
 {: .output}
 
-and then push the change to bitbucket:
+and then push the change to GitHub:
 
 ~~~
-$ git add margherita.md
+$ git add pi.py
 $ git commit -m "Adding a line in our home copy"
 ~~~
 {: .bash}
@@ -72,7 +74,7 @@ $ git commit -m "Adding a line in our home copy"
 {: .output}
 
 ~~~
-$ git push origin master
+$ git push
 ~~~
 {: .bash}
 
@@ -82,35 +84,36 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 352 bytes, done.
 Total 3 (delta 1), reused 0 (delta 0)
-To https://bitbucket.org/vlad/cocktails
+To https://github.com/vlad/picalc
    29aba7c..dabb4c8  master -> master
 ~~~
 {: .output}
 
 Now let's have the other partner
 make a different change to their copy
-*without* updating from bitbucket:
+*without* updating from GitHub:
 
 ~~~
-$ nano margherita
-$ cat margherita.md
+$ nano pi.py
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
-4. Water
+# Add a comment line by collaborator
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+print("QED")
 ~~~
 {: .output}
 
 We can commit the change locally:
 
 ~~~
-$ git add margherita.md
+$ git add pi.py
 $ git commit -m "Adding a line in my copy"
 ~~~
 {: .bash}
@@ -121,17 +124,17 @@ $ git commit -m "Adding a line in my copy"
 ~~~
 {: .output}
 
-but git won't let us push it to bitbucket:
+but git won't let us push it to GitHub:
 
 ~~~
-$ git push origin master
+$ git push
 ~~~
 {: .bash}
 
 ~~~
-To https://bitbucket.org/vlad/cocktails.git
+To https://github.com/vlad/picalc.git
  ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'https://bitbucket.org/vlad/cocktails.git'
+error: failed to push some refs to 'https://github.com/vlad/picalc.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
 hint: before pushing again.
@@ -143,13 +146,13 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 Git detects that the changes made in one copy overlap with those made in the other
 and stops us from trampling on our previous work.
-What we have to do is pull the changes from bitbucket,
+What we have to do is pull the changes from GitHub,
 [merge]({{ page.root }}/reference/#merge) them into the copy we're currently working in,
 and then push that.
 Let's start by pulling:
 
 ~~~
-$ git pull origin master
+$ git pull
 ~~~
 {: .bash}
 
@@ -158,10 +161,10 @@ remote: Counting objects: 5, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 1), reused 3 (delta 1)
 Unpacking objects: 100% (3/3), done.
-From https://bitbucket.org/vlad/cocktails
+From https://github.com/vlad/picalc
  * branch            master     -> FETCH_HEAD
-Auto-merging margherita.md
-CONFLICT (content): Merge conflict in margherita.md
+Auto-merging pi.py
+CONFLICT (content): Merge conflict in pi.py
 Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
@@ -170,27 +173,27 @@ Automatic merge failed; fix conflicts and then commit the result.
 and marks that conflict in the affected file:
 
 ~~~
-$ cat margherita.md
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+    print(a)
 <<<<<<< HEAD
-4. Water
+print("QED")
 =======
-4. Ice
+print(" - which should be close to pi")
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
 ~~~
 {: .output}
 
 Our change—the one in `HEAD`—is preceded by `<<<<<<<`.
 Git has then inserted `=======` as a separator between the conflicting changes
-and marked the end of the content downloaded from bitbucket with `>>>>>>>`.
+and marked the end of the content downloaded from GitHub with `>>>>>>>`.
 (The string of letters and digits after that marker
 identifies the commit we've just downloaded.)
 
@@ -202,26 +205,26 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ~~~
-$ cat margherita.md
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
-4. Crushed Ice
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+print("QED - which should be close to pi")
 ~~~
 {: .output}
 
 To finish merging,
-we add `margherita.md` to the changes being made by the merge
+we add `pi.py` to the changes being made by the merge
 and then commit:
 
 ~~~
-$ git add margherita.md
+$ git add pi.py
 $ git status
 ~~~
 {: .bash}
@@ -233,25 +236,25 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   margherita.md
+	modified:   pi.py
 
 ~~~
 {: .output}
 
 ~~~
-$ git commit -m "Merging changes from bitbucket"
+$ git commit -m "Merging changes from GitHub"
 ~~~
 {: .bash}
 
 ~~~
-[master 2abf2b1] Merging changes from bitbucket
+[master 2abf2b1] Merging changes from GitHub
 ~~~
 {: .output}
 
-Now we can push our changes to bitbucket:
+Now we can push our changes to GitHub:
 
 ~~~
-$ git push origin master
+$ git push
 ~~~
 {: .bash}
 
@@ -261,7 +264,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 697 bytes, done.
 Total 6 (delta 2), reused 0 (delta 0)
-To https://bitbucket.org/vlad/cocktails.git
+To https://github.com/vlad/picalc.git
    dabb4c8..2abf2b1  master -> master
 ~~~
 {: .output}
@@ -271,7 +274,7 @@ so we don't have to fix things by hand again
 when the collaborator who made the first change pulls again:
 
 ~~~
-$ git pull origin master
+$ git pull
 ~~~
 {: .bash}
 
@@ -280,11 +283,11 @@ remote: Counting objects: 10, done.
 remote: Compressing objects: 100% (4/4), done.
 remote: Total 6 (delta 2), reused 6 (delta 2)
 Unpacking objects: 100% (6/6), done.
-From https://bitbucket.org/vlad/cocktails
+From https://github.com/vlad/picalc
  * branch            master     -> FETCH_HEAD
 Updating dabb4c8..2abf2b1
 Fast-forward
- margherita.md | 2 +-
+ pi.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -292,17 +295,17 @@ Fast-forward
 We get the merged file:
 
 ~~~
-$ cat margerita.md
+$ cat pi.py
 ~~~
 {: .bash}
 
 ~~~
-# Margherita
-## Ingredients
-1. Tequila
-2. Triple Sec
-3. Lime Juice
-4. Crushed Ice
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+print("QED - which should be close to pi")
 ~~~
 {: .output}
 
@@ -323,7 +326,7 @@ or find a way to divide the work up differently.
 > Add a new file to it,
 > and modify an existing file (your instructor will tell you which one).
 > When asked by your instructor,
-> pull her changes from the repository to create a conflict,
+> pull the changes from the repository to create a conflict,
 > then resolve it.
 {: .challenge}
 

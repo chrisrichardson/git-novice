@@ -72,14 +72,13 @@ print(a)
 ~~~
 
 Try it by running `python pi.py`. It should print out `3.14151411083`.
-If you want, you can also create a file called "README" with some text in it e.g. "A simple method to calculate pi."
 
 ~~~
-git add pi.py README
-git commit -m "Code to calculate pi and a README"
+git add pi.py
+git commit -m "Code to calculate pi"
 ~~~
 
-Our local repository contains `pi.py` and `README`, but the
+Our local repository contains `pi.py`, but the
 remote repository on GitHub doesn't contain any files yet.
 
 ![New Repository](../fig/git-freshly-made-repo.png)
@@ -205,20 +204,44 @@ GitHub, though, this command would download them to our local repository.
 
 Browse to your `picalc` repository on GitHub.
 
-* Try clicking on the 'Source' button on the left. You can use this to
-   browse all the files in your repository. By using the dropdown menu
-   with the git hash (e.g. d69e7a9) you can choose which version of the
-   file to view.
- * Now look at the 'Commits' button. This shows a graphical
-   representation of what you would see with `git log`. Again the git
-   commit hashes are shown, and if you click on one, it will give you
-   the `git diff` between the two neighbouring versions.
+* Try clicking on the 'Code' tab at top left. You can use this to
+   browse all the files in your repository. There are a lot of other
+   advanced tabs, but you probably just want to stick to "Code" for now.
+
+ * Now look at the 'Commits' button (it probably just says "1 commit"
+   and a clockface). This shows a graphical representation of what you
+   would see with `git log`. The git commit hashes are shown, and
+   if you click on one, it will give you the `git diff` between the
+   two neighbouring versions.
 
 > ## Push vs. Commit
 >
 > In this lesson, we introduced the "git push" command.
 > How is "git push" different from "git commit"?
 {: .challenge}
+
+### Adding more commits
+Let's add some more commits to the repository. Edit `picalc.py` and
+add some more lines, e.g. change it to:
+
+~~~
+a = 2.0
+nmax = 100000
+for n in range(1, nmax):
+    a = a * (n*n)/(n*n - 0.25)
+print(a)
+~~~
+
+~~~
+git add picalc.py
+git commit -m "Set nmax parameter"
+git push
+~~~
+{: .bash}
+
+Now take a look at the web interface again, and see your new
+commit. Spend a bit of time exploring the web interface.
+
 
 > ## Fixing Remote Settings
 >

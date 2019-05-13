@@ -37,12 +37,12 @@ repository to their  machine. This is called "cloning a repo". To
 clone the Owner's repo into their own folder, the Collaborator enters:
 
 ~~~
-$ git clone https://github.org/vlad/picalc.git vlad-picalc
+$ git clone https://github.org/chris/picalc.git picalc_chris
 ~~~
 {: .bash}
 
-Replace 'vlad' with the Owner's username. Note that we have specified
-the folder name as `~/Desktop/vlad-picalc` instead of accepting the
+Replace 'chris' with the Owner's username. Note that we have specified
+the folder name as `~/Desktop/picalc_chris` instead of accepting the
 default of `picalc`. This can be useful to `git clone` repositories to
 folders of your choice.
 
@@ -52,7 +52,7 @@ As Collaborator, you can now make a change in your clone of the
 Owner's repository, in exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/vlad-picalc
+$ cd ~/Desktop/picalc_chris
 $ gedit pi.py
 $ cat pi.py
 ~~~
@@ -93,7 +93,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/picalc.git
+To https://github.com/chris/picalc.git
    9272da5..29aba7c  master -> master
 ~~~
 {: .output}
@@ -118,7 +118,7 @@ remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0)
 Unpacking objects: 100% (3/3), done.
-From https://github.org/vlad/picalc
+From https://github.org/chris/picalc
  * branch            master     -> FETCH_HEAD
 Updating 9272da5..29aba7c
 Fast-forward

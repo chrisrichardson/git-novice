@@ -125,7 +125,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > > Similarly, we can ignore (as discussed later) entire directories, such as the `sphere_calc` directory:
 > >
 > > ~~~
-> > $ nano .gitignore # open the .gitignore file in the texteditor to add the sphere_calc directory
+> > $ gedit .gitignore # open the .gitignore file in the texteditor to add the sphere_calc directory
 > > $ cat .gitignore # if you run cat afterwards, it should look like this:
 > > ~~~
 > > {: .bash}

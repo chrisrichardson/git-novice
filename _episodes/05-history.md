@@ -25,7 +25,7 @@ progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `loop.py`.
 
 ~~~
-$ nano loop.py
+$ gedit loop.py
 $ cat loop.py
 ~~~
 {: .bash}
@@ -186,7 +186,7 @@ How can we restore older versions of things?
 Let's suppose we accidentally overwrite our file:
 
 ~~~
-$ nano loop.py
+$ gedit loop.py
 $ cat loop.py
 ~~~
 {: .bash}
@@ -361,9 +361,9 @@ moving backward and forward in time becomes much easier.
 >
 > ~~~
 > $ cd myproject
-> $ nano example.py #input the following text: "a = 1.0"
+> $ gedit example.py #input the following text: "a = 1.0"
 > $ git add example.py
-> $ nano example.py #add the following text: "print(a*2)"
+> $ gedit example.py #add the following text: "print(a*2)"
 > $ git commit -m "Add simple code"
 > $ git checkout HEAD example.py
 > $ cat example.py #this will print the contents of example.py to the screen

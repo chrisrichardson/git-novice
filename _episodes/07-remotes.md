@@ -58,7 +58,7 @@ cd ~
 mkdir picalc
 cd picalc
 git init
-nano pi.py
+gedit pi.py
 ~~~
 {: .bash}
 

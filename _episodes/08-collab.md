@@ -30,7 +30,7 @@ and enter your partner's username or email, and give them
 "Write access". Click Add. The Collaborator should receive an email
 notifying them they have access.
 
-![Adding Collaborators on GitHub](../fig/github-add-collaborator.png)
+![Adding Collaborators on GitHub](../fig/github-add-collaborators.png)
 
 Next, the Collaborator needs to download a copy of the Owner's
 repository to their  machine. This is called "cloning a repo". To
@@ -46,14 +46,14 @@ the folder name as `~/Desktop/vlad-picalc` instead of accepting the
 default of `picalc`. This can be useful to `git clone` repositories to
 folders of your choice.
 
-![After Creating Clone of Repository](../fig/github-collaboration.svg)
+![After Creating Clone of Repository](../fig/github-collaboration.png)
 
 As Collaborator, you can now make a change in your clone of the
 Owner's repository, in exactly the same way as we've been doing before:
 
 ~~~
 $ cd ~/Desktop/vlad-picalc
-$ nano pi.py
+$ gedit pi.py
 $ cat pi.py
 ~~~
 {: .bash}

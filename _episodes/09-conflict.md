@@ -43,7 +43,7 @@ print(a)
 Let's add a line to one partner's copy only:
 
 ~~~
-$ nano pi.py
+$ gedit pi.py
 $ cat pi.py
 ~~~
 {: .bash}
@@ -94,7 +94,7 @@ make a different change to their copy
 *without* updating from GitHub:
 
 ~~~
-$ nano pi.py
+$ gedit pi.py
 $ cat pi.py
 ~~~
 {: .bash}

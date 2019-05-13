@@ -21,7 +21,14 @@ Let's start off by learning some simple Python. Python is a scripting
 language, which has become very popular. We'll start off by writing a
 very basic program.
 
-Let's create a file called `loop.py` that contains a simple loop.
+It's probably worth pointing out here, that `git` (and revision
+control systems in general) are really only designed for *text* files,
+since they "track changes" line by line. If you add a binary file
+(e.g. a JPEG photo, or a Word document), it will still record them, but not
+very efficiently, and some features will be unavailable. As a general
+rule, don't add binary files to a git repository!
+
+Now, let's create a file called `loop.py` that contains a simple loop.
 (Python files usually have the `.py` suffix).
 (We'll use `nano` to edit the file;
 you can use whatever editor you like.
@@ -29,7 +36,7 @@ In particular, this does not have to be the `core.editor` you set
 globally earlier.)
 
 ~~~
-$ nano loop.py
+$ gedit loop.py
 ~~~
 {: .bash}
 
@@ -151,7 +158,7 @@ This permanent copy is called a [commit]({{ page.root }}/reference/#commit)
 We use the `-m` flag (for "message")
 to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
 If we just run `git commit` without the `-m` option,
-Git will launch `nano` (or whatever other editor we configured as `core.editor`)
+Git will launch `gedit` (or whatever other editor we configured as `core.editor`)
 so that we can write a longer message.
 
 [Good commit messages][commit-messages] start with a brief (<50 characters) summary of
@@ -208,11 +215,11 @@ and the log message Git was given when the commit was created.
 {: .callout}
 
 Now suppose I add more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
+(Again, we'll edit with `gedit` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano loop.py
+$ gedit loop.py
 $ cat loop.py
 ~~~
 {: .bash}
@@ -370,7 +377,7 @@ First,
 we'll add a few more lines to the file:
 
 ~~~
-$ nano loop.py
+$ gedit loop.py
 $ cat loop.py
 ~~~
 {: .bash}
@@ -630,7 +637,7 @@ repository (`git commit`):
 > > First we make our changes to the `loop.py` and `example.py` files:
 > >
 > > ~~~
-> > $ nano loop.py
+> > $ gedit loop.py
 > > $ cat loop.py
 > > ~~~
 > > {: .bash}
@@ -644,7 +651,7 @@ repository (`git commit`):
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano example.py
+> > $ gedit example.py
 > > $ cat example.py
 > > ~~~
 > > {: .bash}
